@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  patient_id: 1
+  date_and_time: 2016-09-27 18:02:00
+  intervention: MyString
+  indication: MyString
+  no_attempts: 1
+  complications: MyString
+
+two:
+  user_id: 1
+  patient_id: 1
+  date_and_time: 2016-09-27 18:02:00
+  intervention: MyString
+  indication: MyString
+  no_attempts: 1
+  complications: MyString

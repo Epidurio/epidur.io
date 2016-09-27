@@ -1,0 +1,33 @@
+%h1 Listing anaesthetics
+
+%table
+  %thead
+    %tr
+      %th User
+      %th Patient
+      %th Date and time
+      %th Intervention
+      %th Indication
+      %th No attempts
+      %th Complications
+      %th
+      %th
+      %th
+
+  %tbody
+    - @anaesthetics.each do |anaesthetic|
+      %tr
+        %td= anaesthetic.user_id
+        %td= anaesthetic.patient_id
+        %td= anaesthetic.date_and_time
+        %td= anaesthetic.intervention
+        %td= anaesthetic.indication
+        %td= anaesthetic.no_attempts
+        %td= anaesthetic.complications
+        %td= link_to 'Show', anaesthetic
+        %td= link_to 'Edit', edit_anaesthetic_path(anaesthetic)
+        %td= link_to 'Destroy', anaesthetic, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Anaesthetic', new_anaesthetic_path

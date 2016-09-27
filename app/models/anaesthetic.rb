@@ -1,0 +1,2 @@
+class Anaesthetic < ApplicationRecord
+end

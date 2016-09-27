@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b First name:
+  = @patient.first_name
+%p
+  %b Last name:
+  = @patient.last_name
+%p
+  %b Dob:
+  = @patient.DOB
+%p
+  %b Mrn:
+  = @patient.MRN
+%p
+  %b Nhs no:
+  = @patient.NHS_No
+
+= link_to 'Edit', edit_patient_path(@patient)
+\|
+= link_to 'Back', patients_path

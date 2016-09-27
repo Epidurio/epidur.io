@@ -1,0 +1,14 @@
+= simple_form_for(@anaesthetic) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :user_id
+    = f.input :patient_id
+    = f.input :date_and_time
+    = f.input :intervention
+    = f.input :indication
+    = f.input :no_attempts
+    = f.input :complications
+
+  .form-actions
+    = f.button :submit
