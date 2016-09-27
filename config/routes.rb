@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :follow_ups
   resources :patients
   resources :anaesthetics do
     resource :patients

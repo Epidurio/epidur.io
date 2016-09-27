@@ -1,0 +1,2 @@
+json.extract! follow_up, :id, :user_id, :patient_id, :nausea, :itching, :headache, :leg_weakness, :leg_numbness, :back_pain, :urinary_rentention, :pain, :awareness_GA, :comments, :created_at, :updated_at
+json.url follow_up_url(follow_up, format: :json)

@@ -1,0 +1,2 @@
+class FollowUp < ApplicationRecord
+end

@@ -1,0 +1,19 @@
+= simple_form_for(@follow_up) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :user_id
+    = f.input :patient_id
+    = f.input :nausea
+    = f.input :itching
+    = f.input :headache
+    = f.input :leg_weakness
+    = f.input :leg_numbness
+    = f.input :back_pain
+    = f.input :urinary_rentention
+    = f.input :pain
+    = f.input :awareness_GA
+    = f.input :comments
+
+  .form-actions
+    = f.button :submit

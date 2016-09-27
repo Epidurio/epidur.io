@@ -1,0 +1,43 @@
+%h1 Listing follow_ups
+
+%table
+  %thead
+    %tr
+      %th User
+      %th Patient
+      %th Nausea
+      %th Itching
+      %th Headache
+      %th Leg weakness
+      %th Leg numbness
+      %th Back pain
+      %th Urinary rentention
+      %th Pain
+      %th Awareness ga
+      %th Comments
+      %th
+      %th
+      %th
+
+  %tbody
+    - @follow_ups.each do |follow_up|
+      %tr
+        %td= follow_up.user_id
+        %td= follow_up.patient_id
+        %td= follow_up.nausea
+        %td= follow_up.itching
+        %td= follow_up.headache
+        %td= follow_up.leg_weakness
+        %td= follow_up.leg_numbness
+        %td= follow_up.back_pain
+        %td= follow_up.urinary_rentention
+        %td= follow_up.pain
+        %td= follow_up.awareness_GA
+        %td= follow_up.comments
+        %td= link_to 'Show', follow_up
+        %td= link_to 'Edit', edit_follow_up_path(follow_up)
+        %td= link_to 'Destroy', follow_up, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Follow up', new_follow_up_path
