@@ -35,6 +35,8 @@ gem "binding_of_caller"
 gem 'devise'
 
 gem 'simple_form'
+
+ruby "2.3.1"
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
