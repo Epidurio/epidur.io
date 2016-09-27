@@ -1,9 +1,9 @@
 %h1 Listing follow_ups
 
-%table
+%table.table.table-striped.table-responsive
   %thead
     %tr
-      %th User
+      %th Doctor
       %th Patient
       %th Nausea
       %th Itching
@@ -22,8 +22,8 @@
   %tbody
     - @follow_ups.each do |follow_up|
       %tr
-        %td= follow_up.user_id
-        %td= follow_up.patient_id
+        %td= follow_up.user.full_name
+        %td= follow_up.patient.full_name
         %td= follow_up.nausea
         %td= follow_up.itching
         %td= follow_up.headache

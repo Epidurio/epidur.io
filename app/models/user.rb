@@ -4,6 +4,9 @@ class User < ApplicationRecord
   has_many :anaesthetics
   has_many :patients, through: :anaesthetics
 
+  has_many :follow_ups
+  has_many :patients, through: :follow_ups
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 

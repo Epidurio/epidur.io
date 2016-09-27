@@ -2,7 +2,7 @@
   = f.error_notification
 
   .form-inputs
-    = f.association :user, label_method: :first_name
+    = f.association :user, label_method: :full_name
     = f.association :patient, label_method: :full_name
     = f.input :date_and_time
     = f.input :intervention, collection:["EPIDURAL", "EPIDURAL TOP UP", "CSE", "SPINAL","INTRATHECAL CATHETER", "GA", "PCA"]

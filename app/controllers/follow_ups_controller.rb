@@ -1,10 +1,19 @@
 class FollowUpsController < ApplicationController
-  before_action :set_follow_up, only: [:show, :edit, :update, :destroy]
+  before_action :set_patient
+  before_action :set_follow_up, except: [:index, :new, :create]
+
+
 
   # GET /follow_ups
   # GET /follow_ups.json
   def index
-    @follow_ups = FollowUp.all
+
+    if params[:patient_id].present?
+        @follow_ups =@patient.follow_ups
+    else
+        @follow_ups = FollowUp.all
+    end
+
   end
 
   # GET /follow_ups/1
@@ -14,7 +23,8 @@ class FollowUpsController < ApplicationController
 
   # GET /follow_ups/new
   def new
-    @follow_up = FollowUp.new
+    @follow_up = @patient.follow_ups.new
+
   end
 
   # GET /follow_ups/1/edit
@@ -24,11 +34,12 @@ class FollowUpsController < ApplicationController
   # POST /follow_ups
   # POST /follow_ups.json
   def create
-    @follow_up = FollowUp.new(follow_up_params)
+      @follow_up = @patient.follow_ups.new(follow_up_params)
+    #@follow_up = FollowUp.new(follow_up_params)
 
     respond_to do |format|
       if @follow_up.save
-        format.html { redirect_to @follow_up, notice: 'Follow up was successfully created.' }
+        format.html { redirect_to patient_follow_ups_url(@patient), notice: 'Follow up was successfully created.' }
         format.json { render :show, status: :created, location: @follow_up }
       else
         format.html { render :new }
@@ -42,7 +53,7 @@ class FollowUpsController < ApplicationController
   def update
     respond_to do |format|
       if @follow_up.update(follow_up_params)
-        format.html { redirect_to @follow_up, notice: 'Follow up was successfully updated.' }
+        format.html { redirect_to [@patient, @follow_up], notice: 'Follow up was successfully updated.' }
         format.json { render :show, status: :ok, location: @follow_up }
       else
         format.html { render :edit }
@@ -56,15 +67,23 @@ class FollowUpsController < ApplicationController
   def destroy
     @follow_up.destroy
     respond_to do |format|
-      format.html { redirect_to follow_ups_url, notice: 'Follow up was successfully destroyed.' }
+      format.html { redirect_to patient_follow_ups_url(@patient), notice: 'Follow up was successfully destroyed.' }
       format.json { head :no_content }
+
+      #redirect_to article_url(@comment.article_id)
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_follow_up
-      @follow_up = FollowUp.find(params[:id])
+      @follow_up = @patient.follow_ups.find(params[:id]) rescue FollowUp.find(params[:id])
+    end
+
+
+
+    def set_patient
+      @patient = Patient.find(params[:patient_id]) rescue Patient.first rescue FollowUp.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
