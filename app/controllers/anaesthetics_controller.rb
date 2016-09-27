@@ -1,10 +1,20 @@
 class AnaestheticsController < ApplicationController
-  before_action :set_anaesthetic, only: [:show, :edit, :update, :destroy]
+  #before_action :authenticate_user!
+  before_action :set_patient
+  before_action :set_anaesthetic, except: [:index, :new, :create]
+
 
   # GET /anaesthetics
   # GET /anaesthetics.json
   def index
-    @anaesthetics = Anaesthetic.all
+    #@anaesthetics = Anaesthetic.all
+    #@anaesthetics =@patient.anaesthetics
+
+    if params[:patient_id].present?
+        @anaesthetics =@patient.anaesthetics
+    else
+        @anaesthetics = Anaesthetic.all
+    end
   end
 
   # GET /anaesthetics/1
@@ -14,22 +24,24 @@ class AnaestheticsController < ApplicationController
 
   # GET /anaesthetics/new
   def new
-    @anaesthetic = Anaesthetic.new
+    @anaesthetic = @patient.anaesthetics.new
   end
 
   # GET /anaesthetics/1/edit
   def edit
+
+
   end
 
   # POST /anaesthetics
   # POST /anaesthetics.json
   def create
-    @anaesthetic = Anaesthetic.new(anaesthetic_params)
+    @anaesthetic = @patient.anaesthetics.new(anaesthetic_params)
 
     respond_to do |format|
       if @anaesthetic.save
-        format.html { redirect_to @anaesthetic, notice: 'Anaesthetic was successfully created.' }
-        format.json { render :show, status: :created, location: @anaesthetic }
+        format.html { redirect_to patient_anaesthetics_url(@patient), notice: 'Anaesthetic was successfully created.' }
+        format.json { render :index, status: :created, location: @anaesthetic }
       else
         format.html { render :new }
         format.json { render json: @anaesthetic.errors, status: :unprocessable_entity }
@@ -42,7 +54,7 @@ class AnaestheticsController < ApplicationController
   def update
     respond_to do |format|
       if @anaesthetic.update(anaesthetic_params)
-        format.html { redirect_to @anaesthetic, notice: 'Anaesthetic was successfully updated.' }
+        format.html { redirect_to [@patient, @anaesthetic], notice: 'Anaesthetic was successfully updated.' }
         format.json { render :show, status: :ok, location: @anaesthetic }
       else
         format.html { render :edit }
@@ -56,7 +68,7 @@ class AnaestheticsController < ApplicationController
   def destroy
     @anaesthetic.destroy
     respond_to do |format|
-      format.html { redirect_to anaesthetics_url, notice: 'Anaesthetic was successfully destroyed.' }
+      format.html { redirect_to patient_anaesthetics_url(@patient), notice: 'Anaesthetic was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -64,11 +76,15 @@ class AnaestheticsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_anaesthetic
-      @anaesthetic = Anaesthetic.find(params[:id])
+      @anaesthetic = @patient.anaesthetics.find(params[:id]) rescue Anaesthetic.find(params[:id])
+    end
+
+    def set_patient
+      @patient = Patient.find(params[:patient_id]) rescue Patient.first rescue Anaesthetic.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def anaesthetic_params
-      params.require(:anaesthetic).permit(:user_id, :patient_id, :date_and_time, :intervention, :indication, :no_attempts, :complications)
+      params.require(:anaesthetic).permit(:user_id, :patient_id, :date_and_time, :intevention, :indication, :no_attempts, :complications)
     end
 end

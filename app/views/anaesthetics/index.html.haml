@@ -17,7 +17,7 @@
   %tbody
     - @anaesthetics.each do |anaesthetic|
       %tr
-        %td= anaesthetic.user_id
+        %td= anaesthetic.user.full_name
         %td= anaesthetic.patient_id
         %td= anaesthetic.date_and_time
         %td= anaesthetic.intervention
