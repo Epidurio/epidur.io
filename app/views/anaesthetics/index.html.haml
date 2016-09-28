@@ -1,0 +1,36 @@
+
+%p#notice= notice
+%h1 Anaesthetics
+
+%table.table.table-striped.table-responsive
+  %thead
+    %tr
+      %th Date and time
+      %th Patient
+      %th Doctor
+      %th grade
+      %th Intervention
+      %th Indication
+      %th Attempts
+      %th Complications
+      %th View Details
+      %th Edit
+      %th Delete
+      %th{:colspan => "3"}
+  %tbody
+    - @anaesthetics.each do |anaesthetic|
+      %tr
+        %td= anaesthetic.date_and_time.strftime("%d/%m/%Y %H:%M")
+        %td= anaesthetic.patient.full_name
+        %td= anaesthetic.user.full_name
+        %td= anaesthetic.user.grade
+
+        %td= anaesthetic.intervention
+        %td= anaesthetic.indication
+        %td= anaesthetic.no_attempts
+        %td= anaesthetic.complications
+        %td= link_to 'Details', [@patient, anaesthetic], :class => 'btn btn-mini btn-success', style: "color:white"
+        %td= link_to 'Edit', edit_anaesthetic_path(anaesthetic), :class => 'btn btn-mini btn-warning', style: "color:white"
+        %td= link_to 'Delete', [@patient, anaesthetic], method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-mini btn-danger', style: "color:white"
+%br/
+= link_to 'New Anaesthetic', new_patient_anaesthetic_path(@patient)

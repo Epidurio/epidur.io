@@ -1,0 +1,1 @@
+json.partial! "anaesthetics/anaesthetic", anaesthetic: @anaesthetic

@@ -10,10 +10,50 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160927115913) do
+ActiveRecord::Schema.define(version: 20160927185514) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "anaesthetics", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "patient_id"
+    t.datetime "date_and_time"
+    t.string   "intervention"
+    t.string   "indication"
+    t.integer  "no_attempts"
+    t.string   "complications"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "follow_ups", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "patient_id"
+    t.boolean  "nausea"
+    t.boolean  "itching"
+    t.boolean  "headache"
+    t.boolean  "leg_weakness"
+    t.boolean  "leg_numbness"
+    t.boolean  "back_pain"
+    t.boolean  "urinary_rentention"
+    t.boolean  "pain"
+    t.boolean  "awareness_GA"
+    t.string   "comments"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.datetime "date_and_time"
+  end
+
+  create_table "patients", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "DOB"
+    t.string   "MRN"
+    t.string   "NHS_No"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -28,6 +68,9 @@ ActiveRecord::Schema.define(version: 20160927115913) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "grade"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end

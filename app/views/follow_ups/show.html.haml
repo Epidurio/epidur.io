@@ -1,0 +1,45 @@
+%p#notice= notice
+
+%p
+  %b Date and time:
+  = @follow_up.date_and_time.strftime("%d/%m/%Y %H:%M")
+%p
+  %b User:
+  = @follow_up.user.full_name
+%p
+  %b Patient:
+  = @follow_up.patient.full_name
+%p
+  %b Nausea:
+  = @follow_up.nausea
+%p
+  %b Itching:
+  = @follow_up.itching
+%p
+  %b Headache:
+  = @follow_up.headache
+%p
+  %b Leg weakness:
+  = @follow_up.leg_weakness
+%p
+  %b Leg numbness:
+  = @follow_up.leg_numbness
+%p
+  %b Back pain:
+  = @follow_up.back_pain
+%p
+  %b Urinary rentention:
+  = @follow_up.urinary_rentention
+%p
+  %b Pain:
+  = @follow_up.pain
+%p
+  %b Awareness ga:
+  = @follow_up.awareness_GA
+%p
+  %b Comments:
+  = @follow_up.comments
+
+= link_to 'Edit', edit_follow_up_path(@follow_up)
+\|
+= link_to 'Back', follow_ups_path

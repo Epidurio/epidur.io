@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  patient_id: 1
+  nausea: false
+  itching: false
+  headache: false
+  leg_weakness: false
+  leg_numbness: 
+  back_pain: false
+  urinary_rentention: false
+  pain: false
+  awareness_GA: false
+  comments: MyString
+
+two:
+  user_id: 1
+  patient_id: 1
+  nausea: false
+  itching: false
+  headache: false
+  leg_weakness: false
+  leg_numbness: 
+  back_pain: false
+  urinary_rentention: false
+  pain: false
+  awareness_GA: false
+  comments: MyString

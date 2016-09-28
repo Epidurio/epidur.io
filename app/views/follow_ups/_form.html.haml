@@ -1,0 +1,20 @@
+= simple_form_for([@patient, @follow_up], html: { class: 'form-horizontal' }) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :date_and_time
+    = f.association :user, label_method: :full_name, :label => "Doctor:"
+    -#= f.association :patient,label_method: :full_name
+    = f.input :nausea
+    = f.input :itching
+    = f.input :headache
+    = f.input :leg_weakness
+    = f.input :leg_numbness
+    = f.input :back_pain
+    = f.input :urinary_rentention
+    = f.input :pain
+    = f.input :awareness_GA
+    = f.input :comments
+
+  .form-actions
+    = f.button :submit, :class => 'btn btn-primary'
