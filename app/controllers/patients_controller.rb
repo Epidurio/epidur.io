@@ -4,7 +4,13 @@ class PatientsController < ApplicationController
   # GET /patients
   # GET /patients.json
   def index
-    @patients = Patient.all
+
+
+    if params[:first_name].present? || params[:last_name].present?
+      @patients = Patient.where("first_name ILIKE ? AND last_name ILIKE ?", "%#{params[:first_name]}%", "%#{params[:last_name]}%")
+    else
+      @patients = Patient.all
+    end
   end
 
   # GET /patients/1

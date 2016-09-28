@@ -1,8 +1,9 @@
-%h1 Listing follow_ups
+%h1 Follow Ups
 
 %table.table.table-striped.table-responsive
   %thead
     %tr
+      %th Date and time
       %th Doctor
       %th Patient
       %th Nausea
@@ -22,6 +23,7 @@
   %tbody
     - @follow_ups.each do |follow_up|
       %tr
+        %th= follow_up.date_and_time.strftime("%d/%m/%Y %H:%M")
         %td= follow_up.user.full_name
         %td= follow_up.patient.full_name
         %td= follow_up.nausea
@@ -34,10 +36,9 @@
         %td= follow_up.pain
         %td= follow_up.awareness_GA
         %td= follow_up.comments
-        %td= link_to 'Show', follow_up
-        %td= link_to 'Edit', edit_follow_up_path(follow_up)
-        %td= link_to 'Destroy', follow_up, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
+        %td= link_to 'Show', follow_up, :class => 'btn btn-mini btn-success'
+        %td= link_to 'Edit', edit_follow_up_path(follow_up), :class => 'btn btn-mini btn-warning'
+        %td= link_to 'Delete', follow_up, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-mini btn-danger'
 %br
 
-= link_to 'New Follow up', new_follow_up_path
+= link_to 'New Follow up', new_patient_follow_up_path(@patient)

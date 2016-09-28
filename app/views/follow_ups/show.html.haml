@@ -1,11 +1,14 @@
 %p#notice= notice
 
 %p
+  %b Date and time:
+  = @follow_up.date_and_time.strftime("%d/%m/%Y %H:%M")
+%p
   %b User:
-  = @follow_up.user_id
+  = @follow_up.user.full_name
 %p
   %b Patient:
-  = @follow_up.patient_id
+  = @follow_up.patient.full_name
 %p
   %b Nausea:
   = @follow_up.nausea

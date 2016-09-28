@@ -1,11 +1,11 @@
 %p#notice= notice
 
 %p
-  %b User:
-  = @anaesthetic.user_id
+  %b Doctor:
+  = @anaesthetic.user.full_name
 %p
   %b Patient:
-  = @anaesthetic.patient_id
+  = @anaesthetic.patient.full_name
 %p
   %b Date and time:
   = @anaesthetic.date_and_time
