@@ -1,5 +1,5 @@
 class Patient < ApplicationRecord
-  enum status: {review: 0, discharge: 1}
+  enum status: {review: 0, discharge: 1, pending: 3}
 
   has_many :anaesthetics
   has_many :users, through: :anaesthetics
