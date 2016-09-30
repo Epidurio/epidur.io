@@ -10,6 +10,8 @@ class PatientsController < ApplicationController
       @patients = Patient.where("first_name ILIKE ? AND last_name ILIKE ?", "%#{params[:first_name]}%", "%#{params[:last_name]}%")
     else
       @patients = Patient.all
+      #@patients = Patient.review
+
     end
   end
 
@@ -75,6 +77,6 @@ class PatientsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def patient_params
-      params.require(:patient).permit(:first_name, :last_name, :DOB, :MRN, :NHS_No)
+      params.require(:patient).permit(:first_name, :last_name, :DOB, :MRN, :NHS_No, :status)
     end
 end

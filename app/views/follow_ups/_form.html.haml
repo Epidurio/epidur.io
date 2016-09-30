@@ -15,6 +15,12 @@
     = f.input :pain
     = f.input :awareness_GA
     = f.input :comments
-    = f.input :status, collection: FollowUp.statuses, input_html: { autocomplete: 'off' }
+
+
+= simple_form_for(@patient) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :status, collection: Patient.statuses.keys, input_html: { autocomplete: 'off' }
   .form-actions
     = f.button :submit, :class => 'btn btn-primary'
