@@ -1,5 +1,6 @@
 class AnaestheticsController < ApplicationController
   before_action :authenticate_user!
+  before_action :anaesthetist_only
   before_action :set_patient
   before_action :set_anaesthetic, except: [:index, :new, :create]
 
@@ -37,7 +38,7 @@ class AnaestheticsController < ApplicationController
   # POST /anaesthetics.json
   def create
     @anaesthetic = @patient.anaesthetics.new(anaesthetic_params)
-    
+
 
     respond_to do |format|
       if @anaesthetic.save
@@ -83,6 +84,12 @@ class AnaestheticsController < ApplicationController
     def set_patient
       @patient = Patient.find(params[:patient_id]) rescue Patient.first rescue Anaesthetic.find(params[:id])
     end
+
+    def anaesthetist_only
+    unless current_user.anaesthetist?
+      redirect_to :back, :alert => "You must be an anaesthetist to access this page."
+    end
+  end
 
 
 
