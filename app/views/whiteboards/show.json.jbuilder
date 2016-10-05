@@ -1,0 +1,1 @@
+json.partial! "whiteboards/whiteboard", whiteboard: @whiteboard

@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Room:
+  = @whiteboard.room_id
+%p
+  %b Patient:
+  = @whiteboard.patient_id
+
+= link_to 'Edit', edit_whiteboard_path(@whiteboard)
+\|
+= link_to 'Back', whiteboards_path

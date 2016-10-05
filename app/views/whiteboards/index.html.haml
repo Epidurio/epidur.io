@@ -1,0 +1,23 @@
+%h1 Listing whiteboards
+
+%table
+  %thead
+    %tr
+      %th Room
+      %th Patient
+      %th
+      %th
+      %th
+
+  %tbody
+    - @whiteboards.each do |whiteboard|
+      %tr
+        %td= whiteboard.room_id
+        %td= whiteboard.patient_id
+        %td= link_to 'Show', whiteboard
+        %td= link_to 'Edit', edit_whiteboard_path(whiteboard)
+        %td= link_to 'Destroy', whiteboard, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Whiteboard', new_whiteboard_path

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160930135809) do
+ActiveRecord::Schema.define(version: 20161005125957) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,9 +52,16 @@ ActiveRecord::Schema.define(version: 20160930135809) do
     t.string   "DOB"
     t.string   "MRN"
     t.string   "NHS_No"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.integer  "status"
+    t.integer  "room_number_id"
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.integer  "room_number"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -76,6 +83,13 @@ ActiveRecord::Schema.define(version: 20160930135809) do
     t.integer  "role"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  end
+
+  create_table "whiteboards", force: :cascade do |t|
+    t.integer  "room_id"
+    t.integer  "patient_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
