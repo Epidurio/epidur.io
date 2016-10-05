@@ -95,6 +95,6 @@ class AnaestheticsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def anaesthetic_params
-      params.require(:anaesthetic).permit(:user_id, :patient_id, :date_and_time, :intervention, :indication, :no_attempts, :complications)
+      params.require(:anaesthetic).permit(:intervention_id,:user_id, :patient_id, :date_and_time, :intervention, :indication, :no_attempts, :complications)
     end
 end

@@ -5,3 +5,5 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+interventions = Intervention.create([{ name: 'Epidural' }, { name: 'Epidural Top Up' }, { name: 'Spinal' }, { name: 'CSE' }, { name: 'Intrathecal Catheter' }, { name: 'PCA' }, { name: 'GA' }])
