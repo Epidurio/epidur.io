@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Patient:
+  = @room_allocation.patient_id
+%p
+  %b Room:
+  = @room_allocation.room_id
+
+= link_to 'Edit', edit_room_allocation_path(@room_allocation)
+\|
+= link_to 'Back', room_allocations_path
