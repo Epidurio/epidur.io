@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  enum role: {anaesthetist: 0, midwife: 1, obstetrician: 2, admin: 3}
+
   has_many :anaesthetics
   has_many :patients, through: :anaesthetics
 
