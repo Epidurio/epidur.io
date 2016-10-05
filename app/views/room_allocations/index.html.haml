@@ -1,0 +1,23 @@
+%h1 Listing room_allocations
+
+%table
+  %thead
+    %tr
+      %th Patient
+      %th Room
+      %th
+      %th
+      %th
+
+  %tbody
+    - @room_allocations.each do |room_allocation|
+      %tr
+        %td= room_allocation.patient.full_name
+        %td= room_allocation.room_id
+        %td= link_to 'Show', room_allocation
+        %td= link_to 'Edit', edit_room_allocation_path(room_allocation)
+        %td= link_to 'Destroy', room_allocation, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Room allocation', new_room_allocation_path

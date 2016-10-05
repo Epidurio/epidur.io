@@ -1,0 +1,10 @@
+= simple_form_for(@room_allocation) do |f|
+  = f.error_notification
+
+  .form-inputs
+
+    = f.association :room, label_method: :room_number
+    = f.association :patient,label_method: :full_name
+
+  .form-actions
+    = f.button :submit

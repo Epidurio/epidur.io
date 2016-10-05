@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :rooms
+  resources :room_allocations
   resources :follow_ups
   resources :patients
   resources :anaesthetics do
