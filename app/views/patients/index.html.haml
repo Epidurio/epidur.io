@@ -1,5 +1,5 @@
 = form_tag patients_path, :method => 'get', html: { class: 'form-horizontal' } do
-  .form-group
+  .form-group.form-horizontal
     = label_tag(:first_name, "First Name:")
     = text_field_tag :first_name, params[:first_name]
     = label_tag(:last_name, "Last Name:")
@@ -44,3 +44,19 @@
 %br
 
 = link_to 'New Patient', new_patient_path
+
+
+
+#accordion.panel-group{"aria-multiselectable" => "true", :role => "tablist"}
+  - @patients.each do |patient|
+    .panel.panel-default
+      #headingOne.panel-heading{:role => "tab"}
+        %h4.panel-title
+          %a{"aria-controls" => "#{'#collapse_' + patient.id.to_s}", "aria-expanded" => "true", "data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#{'#collapse_' + patient.id.to_s}", :role => "button"}
+            = patient.full_name
+      .panel-collapse.collapse.in{"aria-labelledby" => "headingOne", :role => "tabpanel", id: "#{'collapse_' + patient.id.to_s}"}
+        .panel-body
+          %p= patient.full_name
+          %p= patient.DOB
+          %p= patient.MRN
+          %p= patient.NHS_No
