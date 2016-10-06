@@ -2,10 +2,11 @@
   = f.error_notification
 
   .form-inputs
-    = f.association :user, label_method: :full_name
+    = f.association :user, label_method: :full_name, input_html: { value: current_user.id}, selected: current_user.id 
     = f.association :patient, label_method: :full_name
     = f.input :date_and_time
-    = f.input :intervention, collection:["EPIDURAL", "EPIDURAL TOP UP", "CSE", "SPINAL","INTRATHECAL CATHETER", "GA", "PCA"]
+
+    =f.association :intervention
     = f.input :indication, collection:["LABOUR", "ELSC", "EMCS","REPAIR OF TEAR", "EMCS","REPAIR OF TEAR", "MANUAL REMOVAL", "CERVICAL SUTURE REMOVAL", "EMCS","REPAIR OF TEAR", "CERVICAL SUTURE INSERTION"]
     = f.input :no_attempts, collection: 1..5
     = f.input :complications, collection:["NONE","BONEY OBSTRUCTION", "BLOOD IN CATHETER", "DURAL PUNCTURE"]

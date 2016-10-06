@@ -26,7 +26,7 @@
         %th= follow_up.date_and_time.strftime("%d/%m/%Y %H:%M")
         %td= follow_up.user.full_name
         %td= follow_up.patient.full_name
-        %td= follow_up.nausea
+        %td= follow_up.nausea ? 'yes' : 'no'
         %td= follow_up.itching
         %td= follow_up.headache
         %td= follow_up.leg_weakness
