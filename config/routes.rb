@@ -3,9 +3,11 @@ Rails.application.routes.draw do
   resources :room_allocations
   resources :follow_ups
   resources :patients
+
   resources :anaesthetics do
     resource :patients
   end
+  get 'all_anaesthetics', to: 'anaesthetics#all_anaesthetics'
   resources :patients do
     resources :anaesthetics
     resources :follow_ups

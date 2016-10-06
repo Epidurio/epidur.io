@@ -1,21 +1,18 @@
 class AnaestheticsController < ApplicationController
   before_action :authenticate_user!
   before_action :anaesthetist_only
-  before_action :set_patient
-  before_action :set_anaesthetic, except: [:index, :new, :create]
+  before_action :set_patient, except: [:all_anaesthetics]
+  before_action :set_anaesthetic, except: [:index, :all_anaesthetics, :new, :create]
 
 
   # GET /anaesthetics
   # GET /anaesthetics.json
   def index
-    #@anaesthetics = Anaesthetic.all
-    #@anaesthetics =@patient.anaesthetics
+    @anaesthetics =@patient.anaesthetics
+  end
 
-    if params[:patient_id].present?
-        @anaesthetics =@patient.anaesthetics
-    else
-        @anaesthetics = Anaesthetic.all
-    end
+  def all_anaesthetics
+    @anaesthetics = Anaesthetic.all
   end
 
   # GET /anaesthetics/1
@@ -82,7 +79,7 @@ class AnaestheticsController < ApplicationController
     end
 
     def set_patient
-      @patient = Patient.find(params[:patient_id]) rescue Patient.first rescue Anaesthetic.find(params[:id])
+      @patient = Patient.find(params[:patient_id]) # rescue Patient.first rescue Anaesthetic.find(params[:id])
     end
 
     def anaesthetist_only

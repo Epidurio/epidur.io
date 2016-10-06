@@ -1,6 +1,6 @@
 
 
-%h1 Patient Anaesthetics
+%h1 All Anaesthetics
 
 %table.table.table-striped.table-responsive
   %thead
@@ -28,8 +28,8 @@
         %td= anaesthetic.indication
         %td= anaesthetic.no_attempts
         %td= anaesthetic.complications
-        %td= link_to 'Details', [@patient, anaesthetic], :class => 'btn btn-mini btn-success', style: "color:white"
+        %td= link_to 'Details', [anaesthetic.patient, anaesthetic], :class => 'btn btn-mini btn-success', style: "color:white"
         %td= link_to 'Edit', edit_anaesthetic_path(anaesthetic), :class => 'btn btn-mini btn-warning', style: "color:white"
-        %td= link_to 'Delete', [@patient, anaesthetic], method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-mini btn-danger', style: "color:white"
+        %td= link_to 'Delete', [anaesthetic.patient, anaesthetic], method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-mini btn-danger', style: "color:white"
 %br/
-= link_to 'New Anaesthetic', new_patient_anaesthetic_path(@patient)
+/= link_to 'New Anaesthetic', new_patient_anaesthetic_path(@patient)

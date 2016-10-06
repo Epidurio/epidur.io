@@ -2,7 +2,7 @@
   = f.error_notification
 
   .form-inputs
-    = f.association :user, label_method: :full_name
+    = f.association :user, label_method: :full_name, input_html: { value: current_user.id}, selected: current_user.id 
     = f.association :patient, label_method: :full_name
     = f.input :date_and_time
 
