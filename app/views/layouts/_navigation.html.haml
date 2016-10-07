@@ -8,4 +8,4 @@
     #exCollapsingNavbar2.collapse.navbar-toggleable-xs
       = link_to "Regional App", root_path, class: 'navbar-brand'
       %ul.nav.navbar-nav= render 'layouts/nav_links_for_auth'
-      %h1.pull-right= yield(:patient_name)
+      %h1= yield(:patient_name)
