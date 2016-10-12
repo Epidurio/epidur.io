@@ -23,8 +23,7 @@ class FollowUpsController < ApplicationController
 
   # GET /follow_ups/new
   def new
-    @follow_up = @patient.follow_ups.new
-
+    @follow_up = FollowUp.new
   end
 
   # GET /follow_ups/1/edit
@@ -34,12 +33,12 @@ class FollowUpsController < ApplicationController
   # POST /follow_ups
   # POST /follow_ups.json
   def create
-      @follow_up = @patient.follow_ups.new(follow_up_params)
-    #@follow_up = FollowUp.new(follow_up_params)
+    # @follow_up = @patient.follow_ups.new(follow_up_params)
+    @follow_up = FollowUp.new(follow_up_params)
 
     respond_to do |format|
       if @follow_up.save
-        format.html { redirect_to patient_follow_ups_url(@patient), notice: 'Follow up was successfully created.' }
+        format.html { redirect_to @follow_up, notice: 'Follow up was successfully created.' }
         format.json { render :show, status: :created, location: @follow_up }
       else
         format.html { render :new }
