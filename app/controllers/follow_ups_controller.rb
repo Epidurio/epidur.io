@@ -24,6 +24,7 @@ class FollowUpsController < ApplicationController
   # GET /follow_ups/new
   def new
     @follow_up = FollowUp.new
+    @follow_up.build_patient
   end
 
   # GET /follow_ups/1/edit
