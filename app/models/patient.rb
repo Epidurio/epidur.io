@@ -1,4 +1,5 @@
 class Patient < ApplicationRecord
+
   enum status: {review: 0, discharge: 1, pending: 3}
 
   has_one :room_allocation
