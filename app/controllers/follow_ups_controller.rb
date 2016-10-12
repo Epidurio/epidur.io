@@ -89,12 +89,13 @@ class FollowUpsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def follow_up_params
-      params.require(:follow_up).permit(:date_and_time, :user_id, :patient_id, :nausea, :itching, :headache, :leg_weakness, :leg_numbness, :back_pain, :urinary_rentention, :pain, :awareness_GA, :comments, :patients_attributes => [:status])
+      params.require(:follow_up).permit(:date_and_time, :user_id, :patient_id, :nausea, :itching, :headache, :leg_weakness, :leg_numbness, :back_pain, :urinary_rentention, :pain, :awareness_GA, :comments)
     end
 
-    def patient_params
-      params.require(:patient).permit(:status)
 
+
+    def follow_up_params
+      params.fetch(:patient).permit!
     end
 
 

@@ -16,7 +16,7 @@
     = f.input :awareness_GA
     = f.input :comments
 
-    = f.simple_fields_for :patients do |f|
+    = f.simple_fields_for :patient do |f|
       .form-inputs
       = f.input :status, collection: Patient.statuses.keys, input_html: { autocomplete: 'off' }
 
