@@ -24,7 +24,7 @@ class FollowUpsController < ApplicationController
   # GET /follow_ups/new
   def new
     @follow_up = FollowUp.new
-    @follow_up.build_patient
+  
   end
 
   # GET /follow_ups/1/edit
@@ -90,4 +90,5 @@ class FollowUpsController < ApplicationController
     def follow_up_params
       params.require(:follow_up).permit(:date_and_time, :user_id, :patient_id, :nausea, :itching, :headache, :leg_weakness, :leg_numbness, :back_pain, :urinary_rentention, :pain, :awareness_GA, :comments, :status)
     end
+
 end

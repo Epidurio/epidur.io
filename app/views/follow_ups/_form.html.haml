@@ -16,8 +16,8 @@
     = f.input :pain
     = f.input :awareness_GA
     = f.input :comments
-    = f.simple_fields_for(@patient) do |p|
-
-      = p.input :status, collection: Patient.statuses.keys, input_html: { autocomplete: 'off' }
+    = f.input :status, collection: Patient::statuses
+  -#= f.simple_fields_for @patient do |p|
+    = p.input :status, collection: Patient.statuses.keys, input_html: { autocomplete: 'off' }
   .form-actions
     = f.button :submit, :class => 'btn btn-primary'
