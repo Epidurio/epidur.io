@@ -3,9 +3,9 @@
 
   .form-inputs
     = f.input :date_and_time
-    = f.association :user, label_method: :full_name, :label => "Doctor:"
+    = f.association :user, label_method: :full_name, :label => "Doctor:", selected: current_user.id
     -#= f.association :patient,label_method: :full_name
-    = f.input :patient_id, input_html: {value: params[:patient_id]}
+    = f.input :patient_id, input_html: {value: params[:patient_id]}, as: :hidden
     = f.input :nausea, class: :radio
     = f.input :itching
     = f.input :headache
@@ -16,7 +16,7 @@
     = f.input :pain
     = f.input :awareness_GA
     = f.input :comments
-    = f.input :status, collection: Patient::statuses
+    = f.input :status, collection: Patient.statuses.keys, selected: @patient.status
   -#= f.simple_fields_for @patient do |p|
     = p.input :status, collection: Patient.statuses.keys, input_html: { autocomplete: 'off' }
   .form-actions

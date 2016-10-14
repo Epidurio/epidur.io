@@ -1,4 +1,5 @@
 class Patient < ApplicationRecord
+
   enum status: {review: 0, discharge: 1, pending: 3}
 
   has_one :room_allocation
@@ -10,8 +11,6 @@ class Patient < ApplicationRecord
 
   has_many :follow_ups
   has_many :users, through: :follow_ups
-
-  
 
   # Getter
   def full_name

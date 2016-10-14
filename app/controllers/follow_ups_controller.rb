@@ -24,7 +24,7 @@ class FollowUpsController < ApplicationController
   # GET /follow_ups/new
   def new
     @follow_up = FollowUp.new
-  
+
   end
 
   # GET /follow_ups/1/edit
@@ -36,9 +36,10 @@ class FollowUpsController < ApplicationController
   def create
     # @follow_up = @patient.follow_ups.new(follow_up_params)
     @follow_up = FollowUp.new(follow_up_params)
-
+    @follow_up.update_status(Patient.statuses[follow_up_params[:status]])
     respond_to do |format|
       if @follow_up.save
+        # @follow_up.patient.status = params[:status]
         format.html { redirect_to @follow_up, notice: 'Follow up was successfully created.' }
         format.json { render :show, status: :created, location: @follow_up }
       else
@@ -88,7 +89,9 @@ class FollowUpsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def follow_up_params
-      params.require(:follow_up).permit(:date_and_time, :user_id, :patient_id, :nausea, :itching, :headache, :leg_weakness, :leg_numbness, :back_pain, :urinary_rentention, :pain, :awareness_GA, :comments, :status)
+      params.require(:follow_up).permit(:date_and_time, :user_id, :patient_id, :nausea,
+       :itching, :headache, :leg_weakness, :leg_numbness, :back_pain, :urinary_rentention,
+       :pain, :awareness_GA, :comments, :status)
     end
 
 end
