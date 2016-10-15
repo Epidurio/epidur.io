@@ -35,6 +35,7 @@ class FollowUpsController < ApplicationController
   # POST /follow_ups.json
   def create
       @follow_up = @patient.follow_ups.new(follow_up_params)
+      @follow_up.update_status(Patient.statuses[follow_up_params[:status]])
       #@follow_up = @patient.follow_ups.new(follow_up_params)
     #  @patient.follow_ups.update_status(Patient.statuses[follow_up_params[:status]])
     #@follow_up = FollowUp.new(follow_up_params)
