@@ -19,6 +19,8 @@ gem 'coffee-rails', '~> 4.2'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
+gem "selectize-rails"
+
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'bootstrap', '~> 4.0.0.alpha3.1'
 

@@ -15,12 +15,13 @@
     = f.input :pain
     = f.input :awareness_GA
     = f.input :comments
+    = f.input_field :checklist
+    = f.input_field :checklist
 
 
-= simple_form_for(@patient) do |f|
-  = f.error_notification
+    = f.input :checklist, as: :array
 
-  .form-inputs
-    = f.input :status, collection: Patient.statuses.keys, input_html: { autocomplete: 'off' }
+
+
   .form-actions
     = f.button :submit, :class => 'btn btn-primary'
