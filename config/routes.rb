@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :testforms
   resources :rooms
   resources :room_allocations
   resources :follow_ups

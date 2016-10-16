@@ -1,0 +1,23 @@
+%h1 Listing testforms
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Date
+      %th
+      %th
+      %th
+
+  %tbody
+    - @testforms.each do |testform|
+      %tr
+        %td= testform.name
+        %td= testform.date
+        %td= link_to 'Show', testform
+        %td= link_to 'Edit', edit_testform_path(testform)
+        %td= link_to 'Destroy', testform, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Testform', new_testform_path

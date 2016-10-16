@@ -26,15 +26,8 @@
         %th= follow_up.date_and_time.strftime("%d/%m/%Y %H:%M")
         %td= follow_up.user.full_name
         %td= follow_up.patient.full_name
-        %td= follow_up.nausea ? 'yes' : 'no'
-        %td= follow_up.itching
-        %td= follow_up.headache
-        %td= follow_up.leg_weakness
-        %td= follow_up.leg_numbness
-        %td= follow_up.back_pain
-        %td= follow_up.urinary_rentention
-        %td= follow_up.pain
-        %td= follow_up.awareness_GA
+        %td= follow_up.try(:checklist).try(:question)
+
         %td= follow_up.comments
         %td= link_to 'Show', follow_up, :class => 'btn btn-mini btn-success'
         %td= link_to 'Edit', edit_follow_up_path(follow_up), :class => 'btn btn-mini btn-warning'

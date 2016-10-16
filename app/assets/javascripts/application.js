@@ -10,8 +10,15 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
+
 //= require_tree .
+//= require simple_form_extension
+
+$(document).on 'turbolinks:before-cache', ->
+  $('[data-selectize]').each ->
+    this.selectize.destroy()

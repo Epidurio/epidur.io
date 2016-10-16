@@ -1,14 +1,16 @@
-= simple_form_for([@patient, @follow_up], html: { class: 'form-horizontal' }) do |f|
-  = f.error_notification
+= simple_form_for([@patient, @follow_up], html: { class: 'form-horizontal' }) do |form|
+  = form.error_notification
 
   .form-inputs
-    = f.input :date_and_time
-    = f.association :user, label_method: :full_name, :label => "Doctor:"
+    = form.input :date_and_time
+    = form.association :user, label_method: :full_name, :label => "Doctor:"
     -#= f.association :patient,label_method: :full_name
-    = f.association :checklist, label_method: :question
-    = f.input :comments
+    = form.association :checklist, label_method: :question, as: :selectize, collection: Checklist.all
+
+
+    = form.input :comments
 
 
 
   .form-actions
-    = f.button :submit, :class => 'btn btn-primary'
+    = form.button :submit, :class => 'btn btn-primary'
