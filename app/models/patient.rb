@@ -1,6 +1,8 @@
 class Patient < ApplicationRecord
   enum status: {review: 0, discharge: 1, pending: 3}
 
+  accepts_nested_attributes_for :follow_ups
+
   has_one :room_allocation
   has_one :room, through: :room_allocation
 
