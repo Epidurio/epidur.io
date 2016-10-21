@@ -25,6 +25,7 @@ class FollowUpsController < ApplicationController
   def new
     @follow_up = @patient.follow_ups.new
 
+
   end
 
   # GET /follow_ups/1/edit
@@ -35,7 +36,10 @@ class FollowUpsController < ApplicationController
   # POST /follow_ups.json
   def create
       @follow_up = @patient.follow_ups.new(follow_up_params)
-      @follow_up.update_status(Patient.statuses[follow_up_params[:status]])
+
+
+
+
       #@follow_up = @patient.follow_ups.new(follow_up_params)
     #  @patient.follow_ups.update_status(Patient.statuses[follow_up_params[:status]])
     #@follow_up = FollowUp.new(follow_up_params)
@@ -91,7 +95,10 @@ class FollowUpsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def follow_up_params
-      params.require(:follow_up).permit(:date_and_time, :user_id, :patient_id, :nausea, :itching, :headache, :leg_weakness, :leg_numbness, :back_pain, :urinary_rentention, :pain, :awareness_GA, :comments, :statuses_attributes [:status])
+      params.require(:follow_up).permit(:date_and_time, :user_id, :patient_id, :nausea, :itching, :headache, :leg_weakness, :leg_numbness, :back_pain, :urinary_rentention, :pain, :awareness_GA, :comments, :patients_attributes [:status])
 
+    end
+    def follow_up_params
+      params.require(:patient).permit!
     end
 end

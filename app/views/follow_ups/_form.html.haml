@@ -15,23 +15,12 @@
     = f.input :pain
     = f.input :awareness_GA
     = f.input :comments
-    = f.input :status, collection: Patient.statuses.keys, selected: @patient.status
-  = simple_form_for @patient do |m|
-    @patient.statuses.each do |status|
-      field_set_tag 'status'
-      f.simple_fields_for "statuses_attributes[]", status do |pf|
-        pf.input :name
-
-    <%= simple_form_for @machine do |m| %>
-  <% @machine.parts.each do |part| %>
-    <%= field_set_tag 'Part' do %>
-      <%= f.simple_fields_for "parts_attributes[]", part do |pf| %>
-        <%= pf.input :name %>
-      <% end %>
-    <% end %>
-  <% end %>
-<% end %>
+    -#= f.input :status, collection: Patient.statuses.keys, selected: @patient.status
+  = simple_fields_for @patient do |m|
+    .form-inputs
+      = m.input :status, collection: Patient.statuses.keys, selected: @patient.status
 
 
-  .form-actions
-    = f.button :submit, :class => 'btn btn-primary'
+
+    .form-actions
+      = f.button :submit, :class => 'btn btn-primary'
