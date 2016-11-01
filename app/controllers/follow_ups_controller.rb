@@ -24,7 +24,7 @@ class FollowUpsController < ApplicationController
   # GET /follow_ups/new
   def new
     @follow_up = @patient.follow_ups.new
-
+    @follow_up.patient.build
 
   end
 
@@ -36,6 +36,7 @@ class FollowUpsController < ApplicationController
   # POST /follow_ups.json
   def create
       @follow_up = @patient.follow_ups.new(follow_up_params)
+      @follow_up.patient.build
 
 
 

@@ -15,11 +15,11 @@
     = f.input :pain
     = f.input :awareness_GA
     = f.input :comments
+
     -#= f.input :status, collection: Patient.statuses.keys, selected: @patient.status
   = simple_fields_for @patient do |m|
     .form-inputs
       = m.input :status, collection: Patient.statuses.keys, selected: @patient.status
-
 
 
     .form-actions

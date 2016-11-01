@@ -1,10 +1,10 @@
 class FollowUp < ApplicationRecord
-  
 
 
 
-  belongs_to :user
-  belongs_to :patient
+
+  belongs_to :user, required: false
+  belongs_to :patient, required: false
 
   def update_status(status)
     self.patient.status = status
