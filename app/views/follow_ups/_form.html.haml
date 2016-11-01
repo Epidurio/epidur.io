@@ -21,6 +21,5 @@
     .form-inputs
       = m.input :status, collection: Patient.statuses.keys, selected: @patient.status
 
-
     .form-actions
       = f.button :submit, :class => 'btn btn-primary'
