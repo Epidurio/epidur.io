@@ -1,5 +1,7 @@
 %h1 Follow Ups
 
+%h2 Status: #{@patient.status}
+
 %table.table.table-striped.table-responsive
   %thead
     %tr
@@ -23,7 +25,7 @@
   %tbody
     - @follow_ups.each do |follow_up|
       %tr
-        %th= follow_up.date_and_time.strftime("%d/%m/%Y %H:%M")
+        %th= follow_up.date_and_time.try { |x|x.strftime("%d/%m/%Y %H:%M") }
         %td= follow_up.user.full_name
         %td= follow_up.patient.full_name
         %td= follow_up.nausea ? 'yes' : 'no'

@@ -9,7 +9,7 @@ class FollowUpsController < ApplicationController
   def index
 
     if params[:patient_id].present?
-        @follow_ups =@patient.follow_ups
+        @follow_ups = @patient.follow_ups
     else
         @follow_ups = FollowUp.all
     end
@@ -24,7 +24,7 @@ class FollowUpsController < ApplicationController
   # GET /follow_ups/new
   def new
     @follow_up = @patient.follow_ups.new
-    @follow_up.patient.build
+    #@follow_up.patient.build_follow_up
 
   end
 
@@ -35,18 +35,13 @@ class FollowUpsController < ApplicationController
   # POST /follow_ups
   # POST /follow_ups.json
   def create
-      @follow_up = @patient.follow_ups.new(follow_up_params)
-      @follow_up.patient.build
-
-
-
-
-      #@follow_up = @patient.follow_ups.new(follow_up_params)
-    #  @patient.follow_ups.update_status(Patient.statuses[follow_up_params[:status]])
-    #@follow_up = FollowUp.new(follow_up_params)
+    @follow_up = @patient.follow_ups.new(follow_up_params)
 
     respond_to do |format|
       if @follow_up.save
+        # Update the patient with the status
+        @patient.update(patient_params)
+
         format.html { redirect_to patient_follow_ups_url(@patient), notice: 'Follow up was successfully created.' }
         format.json { render :show, status: :created, location: @follow_up }
       else
@@ -88,18 +83,20 @@ class FollowUpsController < ApplicationController
       @follow_up = @patient.follow_ups.find(params[:id]) rescue FollowUp.find(params[:id])
     end
 
-
-
     def set_patient
       @patient = Patient.find(params[:patient_id]) rescue Patient.first rescue FollowUp.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def follow_up_params
-      params.require(:follow_up).permit(:date_and_time, :user_id, :patient_id, :nausea, :itching, :headache, :leg_weakness, :leg_numbness, :back_pain, :urinary_rentention, :pain, :awareness_GA, :comments, :patients_attributes [:status])
-
+      params.require(:follow_up).permit(
+        :date_and_time, :user_id, :patient_id, :nausea, :itching, :headache, 
+        :leg_weakness, :leg_numbness, :back_pain, :urinary_rentention, :pain, 
+        :awareness_GA, :comments
+      )
     end
-    def follow_up_params
-      params.require(:patient).permit!
+
+    def patient_params
+      params.require(:patient).permit(:status)
     end
 end
