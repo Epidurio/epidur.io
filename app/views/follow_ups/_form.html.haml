@@ -5,9 +5,9 @@
     = form.input :date_and_time
     = form.association :user, label_method: :full_name, :label => "Doctor:"
     -#= f.association :patient,label_method: :full_name
-    = form.association :checklist, label_method: :question, as: :selectize, collection: Checklist.all
+    -#= form.association :checklist, label_method: :question, as: :selectize, collection: Checklist.all
 
-
+    = form.input :tags,  as: :selectize, collection: Intervention.all
     = form.input :comments
 
 
