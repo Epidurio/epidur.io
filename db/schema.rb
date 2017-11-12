@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161016173054) do
+ActiveRecord::Schema.define(version: 20171112174138) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20161016173054) do
     t.datetime "date_and_time"
     t.integer  "checklist_id"
     t.text     "tags",               default: [],              array: true
+    t.integer  "discharge_type"
   end
 
   create_table "interventions", force: :cascade do |t|

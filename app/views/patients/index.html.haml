@@ -44,29 +44,3 @@
 %br
 
 = link_to 'New Patient', new_patient_path
-
-
-
-#accordion.panel-group{"aria-multiselectable" => "true", :role => "tablist"}
-  - @patients.each do |patient|
-    .panel.panel-default
-      #headingOne.panel-heading{:role => "tab"}
-        %h4.panel-title
-          %a{"aria-controls" => "#{'#collapse_' + patient.id.to_s}", "aria-expanded" => "true", "data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#{'#collapse_' + patient.id.to_s}", :role => "button"}
-            = patient.full_name
-      .panel-collapse.collapse.in{"aria-labelledby" => "headingOne", :role => "tabpanel", id: "#{'collapse_' + patient.id.to_s}"}
-        .panel-body
-          %td= patient.full_name
-          %td= patient.DOB
-          %td= patient.MRN
-          %td= patient.NHS_No
-          %td= link_to 'create or view', patient_anaesthetics_path(patient_id: patient), :class => 'btn btn-mini btn-primary', style: "color:white"
-          -if patient.pending?
-            %td= link_to 'create', patient_follow_ups_path(patient_id: patient), :class => 'btn btn-mini btn-danger', style: "color:white"
-          -elsif patient.review?
-            %td= link_to 'review', patient_follow_ups_path(patient_id: patient), :class => 'btn btn-mini btn-warning', style: "color:white"
-
-          -else
-            %td= link_to 'complete', patient_follow_ups_path(patient_id: patient), :class => 'btn btn-mini btn-success', style: "color:white"
-          %td= link_to 'View', patient, :class => 'btn btn-mini btn-success', style: "color:white"
-          %td= link_to 'Delete', patient, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-mini btn-danger'

@@ -38,6 +38,10 @@ gem 'devise'
 gem 'simple_form'
 
 ruby "2.3.1"
+
+gem 'test-unit'
+
+gem 'enum_help'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
