@@ -1,0 +1,9 @@
+= simple_form_for(@testform) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :date
+
+  .form-actions
+    = f.button :submit

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161005225715) do
+ActiveRecord::Schema.define(version: 20171112174138) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,12 @@ ActiveRecord::Schema.define(version: 20161005225715) do
     t.integer  "intervention_id"
   end
 
+  create_table "checklists", force: :cascade do |t|
+    t.string   "question"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "follow_ups", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "patient_id"
@@ -41,10 +47,12 @@ ActiveRecord::Schema.define(version: 20161005225715) do
     t.boolean  "pain"
     t.boolean  "awareness_GA"
     t.string   "comments"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.datetime "date_and_time"
-    t.integer  "status"
+    t.integer  "checklist_id"
+    t.text     "tags",               default: [],              array: true
+    t.integer  "discharge_type"
   end
 
   create_table "interventions", force: :cascade do |t|
@@ -76,6 +84,13 @@ ActiveRecord::Schema.define(version: 20161005225715) do
     t.string   "room_type"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "testforms", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

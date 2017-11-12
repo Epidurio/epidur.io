@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @testform.name
+%p
+  %b Date:
+  = @testform.date
+
+= link_to 'Edit', edit_testform_path(@testform)
+\|
+= link_to 'Back', testforms_path

@@ -6,19 +6,10 @@
       %th Date and time
       %th Doctor
       %th Patient
-      %th Nausea
-      %th Itching
-      %th Headache
-      %th Leg weakness
-      %th Leg numbness
-      %th Back pain
-      %th Urinary rentention
-      %th Pain
-      %th Awareness ga
-      %th Comments
-      %th
-      %th
-      %th
+      %th View follow up details
+      %th Edit
+      %th Delete
+
 
   %tbody
     - @follow_ups.each do |follow_up|
@@ -26,17 +17,13 @@
         %th= follow_up.date_and_time.strftime("%d/%m/%Y %H:%M")
         %td= follow_up.user.full_name
         %td= follow_up.patient.full_name
-        %td= follow_up.nausea ? 'yes' : 'no'
-        %td= follow_up.itching
-        %td= follow_up.headache
-        %td= follow_up.leg_weakness
-        %td= follow_up.leg_numbness
-        %td= follow_up.back_pain
-        %td= follow_up.urinary_rentention
-        %td= follow_up.pain
-        %td= follow_up.awareness_GA
-        %td= follow_up.comments
-        %td= link_to 'Show', follow_up, :class => 'btn btn-mini btn-success'
+
+        -if follow_up.discharge?
+          %td= link_to 'complete', follow_up, :class => 'btn btn-mini btn-success', style: "color:white"
+        -if follow_up.review?
+          %td= link_to 'needs review', follow_up, :class => 'btn btn-mini btn-warning', style: "color:white"
+
+
         %td= link_to 'Edit', edit_follow_up_path(follow_up), :class => 'btn btn-mini btn-warning'
         %td= link_to 'Delete', follow_up, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-mini btn-danger'
 %br

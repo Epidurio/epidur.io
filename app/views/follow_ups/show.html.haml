@@ -39,6 +39,9 @@
 %p
   %b Comments:
   = @follow_up.comments
+%p
+  %b Discharge status:
+  = @follow_up.discharge_type
 
 = link_to 'Edit', edit_follow_up_path(@follow_up)
 \|

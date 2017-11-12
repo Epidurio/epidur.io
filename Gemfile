@@ -18,6 +18,7 @@ gem 'coffee-rails', '~> 4.2'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'simple_form_extension'
 
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'bootstrap', '~> 4.0.0.alpha3.1'
@@ -37,6 +38,10 @@ gem 'devise'
 gem 'simple_form'
 
 ruby "2.3.1"
+
+gem 'test-unit'
+
+gem 'enum_help'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
@@ -65,3 +70,5 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'redactor-rails', github: 'glyph-fr/redactor-rails'
