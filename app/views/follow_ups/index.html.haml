@@ -19,13 +19,13 @@
         %td= follow_up.patient.full_name
 
         -if follow_up.discharge?
-          %td= link_to 'complete', follow_up, :class => 'btn btn-mini btn-success', style: "color:white"
+          %td= link_to 'complete', follow_up, :class => 'btn btn-mini btn-success btn-block', style: "color:white"
         -if follow_up.review?
-          %td= link_to 'needs review', follow_up, :class => 'btn btn-mini btn-warning', style: "color:white"
+          %td= link_to 'needs review', follow_up, :class => 'btn btn-mini btn-warning btn-block', style: "color:white"
 
 
-        %td= link_to 'Edit', edit_follow_up_path(follow_up), :class => 'btn btn-mini btn-warning'
-        %td= link_to 'Delete', follow_up, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-mini btn-danger'
+        %td= link_to 'Edit', edit_follow_up_path(follow_up), :class => 'btn btn-mini btn-warning btn-block'
+        %td= link_to 'Delete', follow_up, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-mini btn-danger btn-block'
 %br
 
 = link_to 'New Follow up', new_patient_follow_up_path(@patient)
