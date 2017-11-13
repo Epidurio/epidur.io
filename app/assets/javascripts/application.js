@@ -19,6 +19,6 @@
 //= require_tree .
 //= require simple_form_extension
 
-$(document).on 'turbolinks:before-cache', ->
-  $('[data-selectize]').each ->
-    this.selectize.destroy()
+//$(document).on 'turbolinks:before-cache', ->
+//  $('[data-selectize]').each ->
+//    this.selectize.destroy()
