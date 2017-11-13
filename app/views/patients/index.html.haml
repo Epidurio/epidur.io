@@ -32,13 +32,9 @@
         %td= patient.MRN
         %td= patient.NHS_No
         %td= link_to 'create or view', patient_anaesthetics_path(patient_id: patient), :class => 'btn btn-mini btn-primary btn-block', style: "color:white"
-        -if patient.follow_ups.last.review?
-          %td= link_to 'review', patient_follow_ups_path(patient_id: patient), :class => 'btn btn-mini btn-warning btn-block', style: "color:white"
-        -elsif patient.follow_ups.last.discharge?
-          %td= link_to 'complete', patient_follow_ups_path(patient_id: patient), :class => 'btn btn-mini btn-success btn-block', style: "color:white"
 
-        -else
-          %td= link_to 'complete', patient_follow_ups_path(patient_id: patient), :class => 'btn btn-mini btn-success btn-block', style: "color:white"
+        %td= link_to 'complete', patient_follow_ups_path(patient_id: patient), :class => 'btn btn-mini btn-success btn-block', style: "color:white"
+
         %td= link_to 'View', patient, :class => 'btn btn-mini btn-success btn-block', style: "color:white"
         %td= link_to 'Delete', patient, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-mini btn-danger btn-block'
 %br
