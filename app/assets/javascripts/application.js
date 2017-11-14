@@ -17,7 +17,7 @@
 //= require bootstrap-sprockets
 
 //= require_tree .
-//= require simple_form_extension
+// require simple_form_extension
 
 //$(document).on 'turbolinks:before-cache', ->
 //  $('[data-selectize]').each ->
