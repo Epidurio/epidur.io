@@ -4,4 +4,15 @@ class FollowUp < ApplicationRecord
   belongs_to :user, required: false
   belongs_to :patient, required: false
   belongs_to :checklist, required: false
+
+
+
+  after_create :set_parent_to_pending
+
+    def set_parent_to_pending
+      # child should always have a parent, but we need to check just in case
+      patient.update(status: :pending)
+    end
+  
+
 end
