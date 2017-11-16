@@ -7,13 +7,19 @@ class FollowUp < ApplicationRecord
 
 
 
-  after_create :set_parent_to_pending, unless: Proc.new { self.discharge_type == "review" }
+  before_save :set_patient_to_discharge, if: Proc.new { self.discharge_type == "discharge" }
+  before_save :set_patient_to_pending, if: Proc.new { self.discharge_type == "review" }
+
+  def set_patient_to_discharge
+
+    patient.update(status: :discharge)
+  end
 
 
-    def set_parent_to_pending
-      # child should always have a parent, but we need to check just in case
-      patient.update(status: :discharge)
-    end
-  
+  def set_patient_to_pending
+
+    patient.update(status: :pending)
+  end
+
 
 end
