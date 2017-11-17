@@ -9,6 +9,9 @@ class User < ApplicationRecord
   has_many :follow_ups
   has_many :patients, through: :follow_ups
 
+  has_many :epidural_requests
+  has_many :patients, through: :epidural_requests
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 

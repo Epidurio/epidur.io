@@ -1,0 +1,1 @@
+json.partial! "epidural_requests/epidural_request", epidural_request: @epidural_request

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171112174138) do
+ActiveRecord::Schema.define(version: 20171117184903) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,21 @@ ActiveRecord::Schema.define(version: 20171112174138) do
     t.string   "question"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "epidural_requests", force: :cascade do |t|
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "status"
+    t.string   "history"
+    t.boolean  "cannula"
+    t.boolean  "anticoagulants"
+    t.boolean  "pyrexia"
+    t.boolean  "hypertension"
+    t.string   "platelets"
+    t.datetime "date_and_time"
+    t.integer  "user_id"
+    t.integer  "patient_id"
   end
 
   create_table "follow_ups", force: :cascade do |t|

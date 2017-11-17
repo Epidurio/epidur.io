@@ -11,6 +11,9 @@ class Patient < ApplicationRecord
   has_many :follow_ups
   has_many :users, through: :follow_ups
 
+  has_many :epidural_requests
+  has_many :users, through: :epidural_requests
+
   # Getter
   def full_name
     [first_name, last_name].join(' ')

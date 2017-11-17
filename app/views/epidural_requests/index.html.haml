@@ -1,0 +1,19 @@
+%h1 Listing epidural_requests
+
+%table
+  %thead
+    %tr
+      %th
+      %th
+      %th
+
+  %tbody
+    - @epidural_requests.each do |epidural_request|
+      %tr
+        %td= link_to 'Show', epidural_request
+        %td= link_to 'Edit', edit_epidural_request_path(epidural_request)
+        %td= link_to 'Destroy', epidural_request, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Epidural request', new_epidural_request_path

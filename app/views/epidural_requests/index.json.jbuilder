@@ -1,0 +1,1 @@
+json.array! @epidural_requests, partial: 'epidural_requests/epidural_request', as: :epidural_request

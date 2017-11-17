@@ -1,0 +1,24 @@
+= simple_form_for([@patient, @epidural_request], html: { class: 'form-horizontal' }) do |form|
+  = form.error_notification
+
+  .form-inputs
+    = form.input :date_and_time
+    = form.association :user, label_method: :full_name, input_html: { value: current_user.id}, selected: current_user.id
+    -#= f.association :patient,label_method: :full_name
+    -#= form.association :checklist, label_method: :question, as: :selectize, collection: Checklist.all
+
+
+    = form.input :status
+    = form.input :history
+    = form.input :cannula
+    = form.input :anticoagulants
+    = form.input :pyrexia
+    = form.input :hypertension
+    = form.input :platelets
+
+
+
+
+
+  .form-actions
+    = form.button :submit, :class => 'btn btn-primary'
