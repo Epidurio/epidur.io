@@ -4,9 +4,9 @@
   .form-inputs
     = form.input :date_and_time
     = form.association :user, label_method: :full_name, input_html: { value: current_user.id}, selected: current_user.id
-    -#= f.association :patient,label_method: :full_name
-    -#= form.association :checklist, label_method: :question, as: :selectize, collection: Checklist.all
 
+    = form.association :patient, label_method: :full_name
+    
 
     = form.input :status
     = form.input :history

@@ -1,4 +1,4 @@
-%h1 Listing epidural_requests
+%h1 Listing Epidural Requests
 
 %table
   %thead
@@ -7,13 +7,37 @@
       %th
       %th
 
+
+
+%table.table.table-striped.table-responsive
+  %thead
+    %tr
+      %th Date and time
+      %th Midwife
+      %th Patient
+      %th Request details
+      %th Edit
+      %th Delete
+
+
   %tbody
     - @epidural_requests.each do |epidural_request|
       %tr
-        %td= link_to 'Show', epidural_request
-        %td= link_to 'Edit', edit_epidural_request_path(epidural_request)
-        %td= link_to 'Destroy', epidural_request, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %th= epidural_request.date_and_time.strftime("%d/%m/%Y %H:%M")
+        %td= epidural_request.user.full_name
+        %td= epidural_request.patient.full_name
 
+
+
+        -if epidural_request.complete?
+          %td= link_to 'complete', epidural_request, :class => 'btn btn-mini btn-success btn-block', style: "color:white"
+        -if epidural_request.pending?
+          %td= link_to 'needs review', epidural_request, :class => 'btn btn-mini btn-warning btn-block', style: "color:white"
+
+
+
+        %td= link_to 'Edit', edit_epidural_request_path(epidural_request), :class => 'btn btn-mini btn-warning btn-block'
+        %td= link_to 'Destroy', epidural_request,  :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-mini btn-danger btn-block'
 %br
 
 = link_to 'New Epidural request', new_epidural_request_path
