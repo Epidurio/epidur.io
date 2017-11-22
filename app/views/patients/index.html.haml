@@ -34,7 +34,12 @@
         %td= patient.MRN
         %td= patient.NHS_No
         %td= link_to 'create or view', patient_epidural_requests_path(patient_id: patient), :class => 'btn btn-mini btn-primary btn-block', style: "color:white"
-        /%td= (Time.now - patient.epidural_requests.last.date_and_time)/60
+        /%td= (Time.now - patient.try(:epidural_requests).last.date_and_time).strftime("%H:%M:%S")
+        /%td= time_ago_in_words(patient.try(:epidural_requests).last.date_and_time)
+        %td= time_ago_in_words(patient.try(:epidural_requests).last.created_at) + ' ago'
+
+        /Tweeted <%= time_ago_in_words(tweet.created_at) ago
+
         %td= link_to 'create or view', patient_anaesthetics_path(patient_id: patient), :class => 'btn btn-mini btn-primary btn-block', style: "color:white"
 
         -if patient.discharge?
