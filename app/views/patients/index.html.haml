@@ -40,6 +40,8 @@
         /%td= time_ago_in_words(patient.try(:epidural_requests).try(:last).try(:date_and_time))
         -if patient.epidural_requests.exists?
           %td= time_ago_in_words(patient.epidural_requests.last.date_and_time)
+        -else
+          %td= "N/A"
 
 
 
