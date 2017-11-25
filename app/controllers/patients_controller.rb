@@ -1,4 +1,5 @@
 class PatientsController < ApplicationController
+
   before_action :set_patient, only: [:show, :edit, :update, :destroy]
 
   # GET /patients
@@ -22,7 +23,12 @@ class PatientsController < ApplicationController
 
   # GET /patients/new
   def new
-    @patient = Patient.new
+    @client = FHIR::Client.new('https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca')
+
+    FHIR::Model.client = @client
+    @patient = @client.read(FHIR::Patient, "1316025", 'application/json+fhir').resource
+
+    #@patient = Patient.new
   end
 
   # GET /patients/1/edit

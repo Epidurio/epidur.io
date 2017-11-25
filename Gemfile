@@ -42,6 +42,8 @@ ruby "2.3.1"
 gem 'test-unit'
 
 gem 'enum_help'
+
+gem 'fhir_client'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password

@@ -1,5 +1,12 @@
 class ApplicationController < ActionController::Base
+  require 'fhir_client'
+
+  @client = FHIR::Client.new('https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca')
+
+  FHIR::Model.client = @client
+
   protect_from_forgery with: :exception
+
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
