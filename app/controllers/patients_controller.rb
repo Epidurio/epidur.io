@@ -26,9 +26,10 @@ class PatientsController < ApplicationController
     @client = FHIR::Client.new('https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca')
 
     FHIR::Model.client = @client
-    @patient = @client.read(FHIR::Patient, "1316025", 'application/json+fhir').resource
+    demo = @client.read(FHIR::Patient, "1316025", 'application/json+fhir').resource
 
-    #@patient = Patient.new
+
+    @patient = Patient.new(first_name: demo.name[0].given,last_name: demo.name.last.family, DOB: demo.birthDate, MRN: demo.id)
   end
 
   # GET /patients/1/edit
