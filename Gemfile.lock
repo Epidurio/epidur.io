@@ -1,6 +1,6 @@
 GIT
-  remote: git://github.com/glyph-fr/redactor-rails.git
-  revision: 2da8b5deac143f6a074d9d040040644e0659a783
+  remote: git://github.com/xana68/redactor-rails.git
+  revision: 6f6655fd71199700f2e5d7bc1f7f3c19f37dde50
   specs:
     redactor-rails (0.6.0)
       mime-types
