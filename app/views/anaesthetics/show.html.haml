@@ -1,27 +1,29 @@
 %p#notice= notice
 
 %p
-  %b Doctor:
-  = @anaesthetic.user.full_name
+  %b Date and time:
+  /= DateTime.iso8601(@anaesthetic["composition"]["epidural_repport/context/start_time"]).strftime("%d/%m/%Y %H:%M")
+%p
+  %b User:
+  = @anaesthetic["composition"]["epidural_repport/composer|name"]
 %p
   %b Patient:
-  = @anaesthetic.patient.full_name
+  placeholder - get this from Cerner
 %p
-  %b Date and time:
-  = @anaesthetic.date_and_time
+  %b Hospital:
+  = @anaesthetic["composition"]["epidural_repport/context/_health_care_facility|id_namespace"]
 %p
-  %b Intervention:
-  = @anaesthetic.try(:intervention).try(:name)
+  %b Approach:
+  = @anaesthetic["composition"]["epidural_repport/procedure:0/epidural_detail:0/approach|value"]
 %p
-  %b Indication:
-  = @anaesthetic.indication
-%p
-  %b No attempts:
-  = @anaesthetic.no_attempts
-%p
-  %b Complications:
-  = @anaesthetic.complications
+  %b Depth:
+  = @anaesthetic["composition"]["epidural_repport/procedure:0/epidural_detail:0/depth|magnitude"].to_s + " " + @anaesthetic["composition"]["epidural_repport/procedure:0/epidural_detail:0/depth|unit"]
 
-= link_to 'Edit', edit_anaesthetic_path(@anaesthetic)
+
+= link_to 'Edit', edit_follow_up_path(@anaesthetic)
 \|
-= link_to 'Back', anaesthetics_path
+= link_to 'Back', follow_ups_path
+
+%p
+  = @anaesthetic.keys.each {|k| puts k}
+  = @anaesthetic

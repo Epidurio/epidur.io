@@ -1,14 +1,14 @@
 class AnaestheticsController < ApplicationController
   before_action :authenticate_user!
   before_action :anaesthetist_only
-  before_action :set_patient, except: [:all_anaesthetics]
-  before_action :set_anaesthetic, except: [:index, :all_anaesthetics, :new, :create]
+  # before_action :set_patient, except: [:all_anaesthetics]
+  # before_action :set_anaesthetic, except: [:index, :all_anaesthetics, :new, :create]
 
 
   # GET /anaesthetics
   # GET /anaesthetics.json
   def index
-    @anaesthetics =@patient.anaesthetics
+    @all_reports_for_one_patient = openehr_get_list_of_anaesthetics(ehrid_from_cernermrn)["resultSet"]
   end
 
   def all_anaesthetics
@@ -18,6 +18,7 @@ class AnaestheticsController < ApplicationController
   # GET /anaesthetics/1
   # GET /anaesthetics/1.json
   def show
+    @anaesthetic = get_anaesthetic_composition(params[:id])
   end
 
   # GET /anaesthetics/new
@@ -88,7 +89,45 @@ class AnaestheticsController < ApplicationController
     end
   end
 
+  def ehrid_from_cernermrn
+    # hardcoded MRN in the URL string
+    url = URI("https://cdr.code4health.org/rest/v1/ehr/?subjectId=1316025&subjectNamespace=uk.nhs.nhs_number")
+    http = Net::HTTP.new(url.host, url.port)
+    http.use_ssl = true
+    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+    request = Net::HTTP::Get.new(url)
+    request["authorization"] = 'Basic aWFubWNuaWNvbGxfOGQwMjlmZWYtNzcwZC00OWYyLTliZWYtYmQxZTIxYWY5NDU3OiQyYSQxMCQ2MTlraQ=='
+    request["content-type"] = 'application/json'
+    request["ehr-session-disabled"] = '09ec03be-a0ca-48bc-bf0b-6681bfde5342'
+    response = http.request(request)
+    @response_hash = JSON.parse(response.read_body)
+    @ehrid = @response_hash["ehrId"]
+  end
 
+  def openehr_get_list_of_anaesthetics(ehr_id)
+    url = URI("https://cdr.code4health.org/rest/v1/query")
+    http = Net::HTTP.new(url.host, url.port)
+    http.use_ssl = true
+    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+    request = Net::HTTP::Post.new(url)
+    request["content-type"] = 'application/json'
+    request["authorization"] = 'Basic aWFubWNuaWNvbGxfOGQwMjlmZWYtNzcwZC00OWYyLTliZWYtYmQxZTIxYWY5NDU3OiQyYSQxMCQ2MTlraQ=='
+    request.body = "{ \"aql\": \"select     a/uid/value as uid,     a/composer/name as clinician_name,     a/context/start_time/value as start_date,     b_a/items[at0001]/value/magnitude as attempts,     b_a/items[at0010]/value/value as position,     b_b/description[at0001]/items[at0014]/value/value as indication,     b_b/description[at0001]/items[at0006]/value/value as complication from EHR e [ehr_id/value = '#{ehr_id}'] contains COMPOSITION a[openEHR-EHR-COMPOSITION.report-procedure.v1] contains (     CLUSTER b_a[openEHR-EHR-CLUSTER.epidural_detail.v0] and     ACTION b_b[openEHR-EHR-ACTION.procedure.v1]) where a/name/value='Epidural Repport' order by a/context/start_time/value DESC\"}"
+    response = http.request(request)
+    @response_hash = JSON.parse(response.read_body)
+  end
+
+  def get_anaesthetic_composition(composition_id)
+    url = URI("https://cdr.code4health.org/rest/v1/composition/#{composition_id}?format=FLAT")
+    http = Net::HTTP.new(url.host, url.port)
+    http.use_ssl = true
+    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+    request = Net::HTTP::Get.new(url)
+    request["content-type"] = 'application/json'
+    request["authorization"] = 'Basic aWFubWNuaWNvbGxfOGQwMjlmZWYtNzcwZC00OWYyLTliZWYtYmQxZTIxYWY5NDU3OiQyYSQxMCQ2MTlraQ=='
+    response = http.request(request)
+    @response_hash = JSON.parse(response.read_body)
+  end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def anaesthetic_params

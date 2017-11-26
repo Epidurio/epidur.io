@@ -1,5 +1,10 @@
 class EpiduralRequestsController < ApplicationController
-  before_action :set_epidural_request, only: [:show, :edit, :update, :destroy]
+  require 'uri'
+  require 'net/http'
+  require 'openssl'
+  require 'json'
+
+  before_action :set_epidural_request, only: [:edit, :update, :destroy]
 
   # GET /epidural_requests
   # GET /epidural_requests.json
@@ -10,6 +15,9 @@ class EpiduralRequestsController < ApplicationController
   # GET /epidural_requests/1
   # GET /epidural_requests/1.json
   def show
+    ehrid = ehrid_from_cernermrn
+
+    @epidural_request = EpiduralRequest.new
   end
 
   # GET /epidural_requests/new
@@ -71,4 +79,20 @@ class EpiduralRequestsController < ApplicationController
     def epidural_request_params
       params.require(:epidural_request).permit(:date_and_time, :patient_id, :user_id, :anticoagulants, :status, :platelets, :pyrexia, :cannula, :hypertension, :history)
     end
+
+    def ehrid_from_cernermrn
+      # hardcoded MRN in the URL string
+      url = URI("https://cdr.code4health.org/rest/v1/ehr/?subjectId=1316025&subjectNamespace=uk.nhs.nhs_number")
+      http = Net::HTTP.new(url.host, url.port)
+      http.use_ssl = true
+      http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+      request = Net::HTTP::Get.new(url)
+      request["authorization"] = 'Basic aWFubWNuaWNvbGxfOGQwMjlmZWYtNzcwZC00OWYyLTliZWYtYmQxZTIxYWY5NDU3OiQyYSQxMCQ2MTlraQ=='
+      request["content-type"] = 'application/json'
+      request["ehr-session-disabled"] = '09ec03be-a0ca-48bc-bf0b-6681bfde5342'
+      response = http.request(request)
+      @response_hash = JSON.parse(response.read_body)
+      @ehrid = @response_hash["ehrId"]
+    end
+
 end
