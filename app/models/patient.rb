@@ -4,7 +4,6 @@ class Patient < ApplicationRecord
   has_one :room_allocation
   has_one :room, through: :room_allocation
 
-
   has_many :anaesthetics
   has_many :users, through: :anaesthetics
 

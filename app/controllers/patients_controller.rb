@@ -23,13 +23,7 @@ class PatientsController < ApplicationController
 
   # GET /patients/new
   def new
-    @client = FHIR::Client.new('https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca')
-
-    FHIR::Model.client = @client
-    demo = @client.read(FHIR::Patient, "1316025", 'application/json+fhir').resource
-
-
-    @patient = Patient.new(first_name: demo.name[0].given,last_name: demo.name.last.family, DOB: demo.birthDate, MRN: demo.id)
+    @patient = Patient.new
   end
 
   # GET /patients/1/edit
@@ -39,7 +33,27 @@ class PatientsController < ApplicationController
   # POST /patients
   # POST /patients.json
   def create
+    # Connect to Cerner FHIR Server to get demographics from MRN number
+    @client = FHIR::Client.new('https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca')
+    FHIR::Model.client = @client
+    demo = @client.read(FHIR::Patient, patient_params[:MRN], 'application/json+fhir').resource
+
+    # Connect to openEHR to create an EHR with this user and get ehrId
+    url = URI("https://cdr.code4health.org/rest/v1/ehr?subjectId=#{patient_params[:MRN]}&subjectNamespace=uk.nhs.nhs_number&commiterName=%7B%7BcommitterName%7D%7D")
+    http = Net::HTTP.new(url.host, url.port)
+    http.use_ssl = true
+    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+    request = Net::HTTP::Get.new(url)
+    request["content-type"] = 'application/json'
+    request["authorization"] = 'Basic aWFubWNuaWNvbGxfOGQwMjlmZWYtNzcwZC00OWYyLTliZWYtYmQxZTIxYWY5NDU3OiQyYSQxMCQ2MTlraQ=='
+    request.body = "{\n    \"subjectId\": \"#{patient_params[:MRN]}\",\n    \"subjectNamespace\": \"uk.nhs.nhs_number\",\n  \"queryable\": \"true\",\n  \"modifiable\": \"true\"\n}"
+    response = http.request(request)
     @patient = Patient.new(patient_params)
+    @patient.update(ehr_id: JSON.parse(response.read_body)["ehrId"])
+    @patient.update(first_name: demo.name[0].given.first)
+    @patient.update(last_name: demo.name.last.family.first)
+    @patient.update(DOB: demo.birthDate)
+    @patient.update(MRN: demo.id)
 
     respond_to do |format|
       if @patient.save
@@ -84,6 +98,6 @@ class PatientsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def patient_params
-      params.require(:patient).permit(:first_name, :last_name, :DOB, :MRN, :NHS_No, :status)
+      params.require(:patient).permit(:first_name, :last_name, :DOB, :MRN, :NHS_No, :ehr_id, :status)
     end
 end

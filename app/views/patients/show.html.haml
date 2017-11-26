@@ -1,4 +1,4 @@
-- content_for(:patient_name, @patient.full_name)
+- content_for(:patient_name)
 
 %p#notice= notice
 
@@ -15,8 +15,12 @@
   %b Mrn:
   = @patient.MRN
 %p
-  %b Nhs no:
+  %b NHS no:
   = @patient.NHS_No
+
+%p
+  %b openEHR EHR-id:
+  = @patient.ehr_id
 
 = link_to 'Edit', edit_patient_path(@patient)
 \|
