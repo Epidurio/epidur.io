@@ -2,45 +2,46 @@
 <div style="width: 100%; height: 500px" id="epidural">
 </div>
 <script>
+
   var chart = c3.generate({
       bindto: "#epidural",
+      axis: {
+          x: {
+              type: 'category',
+              categories: [
+                'January',
+                'February',
+                'March',
+                'April',
+                'May',
+                'June',
+                'July',
+                'August',
+                'September',
+                'October',
+                'November',
+                'December'
+              ]
+          },
+          y2: {show: true }
+      },
+      color: {
+          pattern: ['#48DA69', '#D38B30', '#D34F2E', '#AAAAAA']
+      },
       data: {
           columns: [
-              [
-                'Average Wait Time', 70, 80, 30, 10, 90, 60, 50, 30, 20, 26, 27, 28
-              ],
+              ['0 -10 mins', 20, 28, 26, 24, 22, 20, 18, 16, 14, 12, 10, 48],
+              ['10 - 20 mins', 70, 68, 66, 64, 62, 60, 58, 56, 54, 52, 50, 48],
+              ['20 - 30 mins', 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 51],
               [
                 'Total Number', 200, 220, 100, 235, 240, 250, 280, 290, 300, 302, 310, 315
               ]
           ],
           axes: {
-              "Average Wait Time": 'y',
               "Total Number": 'y2'
           },
-          axis: {
-              y2: {
-                  show: true
-              },
-              x: {
-                  type: 'category',
-                  categories: [
-                    'January',
-                    'February',
-                    'March',
-                    'April',
-                    'May',
-                    'June',
-                    'July',
-                    'August',
-                    'September',
-                    'October',
-                    'November',
-                    'December'
-                  ]
-              }
-          },
+          type: 'bar',
           types: {
-              "Average Wait Time": 'area-spline',
               "Total Number": 'area-spline'
           }
       }
@@ -87,7 +88,8 @@
                     'November',
                     'December'
                   ]
-              }
+              },
+              y2: {show: true }
           },
           types: {
               "Average Wait Time": 'area-spline',
@@ -95,6 +97,8 @@
           }
       }
   });
+
+
 </script>
 average wait for epidural
 average wait for follow up
