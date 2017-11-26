@@ -1,0 +1,62 @@
+.demographics {
+    display: block;
+    box-sizing: border-box;
+    position: relative;
+    clear: both;
+    margin: 0 0px;
+    padding: 8px;
+    height:55px;
+    width: 780px;
+    font-size: 16px;
+    background: #778899;
+    color: white;
+    font-weight: bold;
+    line-height: 1.2em;
+}
+
+.demographics dt {
+    font-size: 0.8em;
+    font-weight: normal;
+    font-style: italic;
+    display: inline;
+}
+
+.demographics dd {
+    margin: 0;
+    display: inline;
+}
+
+.demographics div {
+    display: inline-block;
+}
+
+.demographics .name {
+    float: left;
+}
+
+.demographics .detail, .demographics .identifiers {
+    float: right;
+    margin-left: 0.4em;
+}
+
+.demographics .identifiers dt {
+    width: 51px;
+    display: inline-block;
+    text-align: right;
+    margin-right: 0.4em;
+}
+
+.demographics dd[itemprop="NHSNo"]::after {
+    content: "";
+    display: block;
+}
+
+.demographics dd[itemprop="streetAddress"]::after,
+.demographics dd[itemprop="addressLocality"]::after {
+    content: ", ";
+}
+
+
+.ui.container {
+    max-width: 780px !important;
+}
