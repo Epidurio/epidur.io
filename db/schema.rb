@@ -70,7 +70,6 @@ ActiveRecord::Schema.define(version: 20171126100859) do
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
     t.datetime "date_and_time"
-    t.integer  "status"
     t.integer  "checklist_id"
     t.text     "tags",               default: [],              array: true
     t.integer  "discharge_type"
