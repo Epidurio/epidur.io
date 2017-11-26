@@ -2,13 +2,19 @@
 
 %p
   %b Date and time:
-  /= DateTime.iso8601(@anaesthetic["composition"]["epidural_repport/context/start_time"]).strftime("%d/%m/%Y %H:%M")
+  = DateTime.iso8601(@anaesthetic["composition"]["epidural_repport/context/start_time"]).strftime("%d/%m/%Y %H:%M")
 %p
   %b User:
   = @anaesthetic["composition"]["epidural_repport/composer|name"]
 %p
   %b Patient:
   placeholder - get this from Cerner
+%p
+  %b Intervention:
+  = @anaesthetic["composition"]["epidural_repport/procedure:0/intervention"]
+%p
+  %b Indication:
+  = @anaesthetic["composition"]["epidural_repport/procedure:0/indication:0"]
 %p
   %b Hospital:
   = @anaesthetic["composition"]["epidural_repport/context/_health_care_facility|id_namespace"]
@@ -18,8 +24,12 @@
 %p
   %b Depth:
   = @anaesthetic["composition"]["epidural_repport/procedure:0/epidural_detail:0/depth|magnitude"].to_s + " " + @anaesthetic["composition"]["epidural_repport/procedure:0/epidural_detail:0/depth|unit"]
-
-
+%p
+  %b Level:
+  = @anaesthetic["composition"]["epidural_repport/procedure:0/epidural_detail:0/spinal_level|value"]
+%p
+  %b Complications:
+  = @anaesthetic["composition"]["epidural_repport/procedure:0/complication:0"]
 = link_to 'Edit', edit_follow_up_path(@anaesthetic)
 \|
 = link_to 'Back', follow_ups_path
