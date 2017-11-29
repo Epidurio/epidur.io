@@ -1,0 +1,158 @@
+archetype (adl_version=1.4)
+    openEHR-EHR-CLUSTER.epidural_follow_up_details.v0
+
+concept
+    [at0000]
+
+language
+    original_language = <[ISO_639-1::en]>
+
+description
+    original_author = <
+        ["date"] = <"2017-11-25">
+        ["name"] = <"Hildegard Franke">
+        ["organisation"] = <"freshEHR Clinical Informatics Ltd.">
+        ["email"] = <"hildi@freshehr.com">
+    >
+    lifecycle_state = <"unmanaged">
+    details = <
+        ["en"] = <
+            language = <[ISO_639-1::en]>
+            purpose = <"For the recording of epidural follow-up details not availalbe elsewhere.">
+            copyright = <"© openEHR Foundation">
+            use = <"Use to record epidural follow-up details.">
+            other_details = <
+                ["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/.">
+                ["custodian_organisation"] = <"openEHR Foundation">
+                ["original_namespace"] = <"org.openehr">
+                ["original_publisher"] = <"openEHR Foundation">
+                ["custodian_namespace"] = <"org.openehr">
+            >
+        >
+    >
+    other_details = <
+        ["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/.">
+    >
+
+definition
+    CLUSTER[at0000] matches {
+        items cardinality matches {0..*; unordered} matches {
+            ELEMENT[at0001] occurrences matches {0..1} matches {
+                value matches {
+                    DV_BOOLEAN matches {*}
+                }
+            }
+            ELEMENT[at0002] occurrences matches {0..1} matches {
+                value matches {
+                    DV_BOOLEAN matches {*}
+                }
+            }
+            ELEMENT[at0003] occurrences matches {0..1} matches {
+                value matches {
+                    DV_BOOLEAN matches {*}
+                }
+            }
+            ELEMENT[at0004] occurrences matches {0..1} matches {
+                value matches {
+                    DV_BOOLEAN matches {*}
+                }
+            }
+            ELEMENT[at0005] occurrences matches {0..1} matches {
+                value matches {
+                    DV_BOOLEAN matches {*}
+                }
+            }
+            ELEMENT[at0006] occurrences matches {0..1} matches {
+                value matches {
+                    DV_BOOLEAN matches {*}
+                }
+            }
+            ELEMENT[at0007] occurrences matches {0..1} matches {
+                value matches {
+                    DV_BOOLEAN matches {*}
+                }
+            }
+            ELEMENT[at0008] occurrences matches {0..1} matches {
+                value matches {
+                    DV_BOOLEAN matches {*}
+                }
+            }
+            ELEMENT[at0009] occurrences matches {0..1} matches {
+                value matches {
+                    DV_BOOLEAN matches {*}
+                }
+            }
+            ELEMENT[at0010] occurrences matches {0..1} matches {
+                value matches {
+                    DV_CODED_TEXT matches {
+                        defining_code matches {
+                            [local::
+                            at0011,
+                            at0012]
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+ontology
+    terminologies_available = <"en", ...>
+    term_definitions = <
+        ["en"] = <
+            items = <
+                ["at0000"] = <
+                    text = <"Epidural follow up details">
+                    description = <"Epidural follow up details.">
+                >
+                ["at0001"] = <
+                    text = <"Nausea">
+                    description = <"*">
+                >
+                ["at0002"] = <
+                    text = <"Itching">
+                    description = <"*">
+                >
+                ["at0003"] = <
+                    text = <"Headache">
+                    description = <"*">
+                >
+                ["at0004"] = <
+                    text = <"Leg weakness">
+                    description = <"*">
+                >
+                ["at0005"] = <
+                    text = <"Leg numbness">
+                    description = <"*">
+                >
+                ["at0006"] = <
+                    text = <"Back pain">
+                    description = <"*">
+                >
+                ["at0007"] = <
+                    text = <"Urinary retention">
+                    description = <"*">
+                >
+                ["at0008"] = <
+                    text = <"Pain">
+                    description = <"*">
+                >
+                ["at0009"] = <
+                    text = <"Awareness GA">
+                    description = <"*">
+                >
+                ["at0010"] = <
+                    text = <"Discharge type">
+                    description = <"*">
+                >
+                ["at0011"] = <
+                    text = <"Discharge">
+                    description = <"Patient is ready for discharge.">
+                >
+                ["at0012"] = <
+                    text = <"Review">
+                    description = <"Patient requires further review.">
+                >
+            >
+        >
+    >

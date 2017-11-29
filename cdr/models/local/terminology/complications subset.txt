@@ -1,0 +1,4 @@
+SNOMED-CT::398042001::Accidental dural puncture
+SNOMED-CT::22253000::Pain
+SNOMED-CT::91019004::Paraesthesia
+SNOMED-CT::11301007::Narrowing of intervertebral disc space

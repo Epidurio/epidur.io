@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tem:template xmlns:tem="openEHR/v1/Template">
+    <tem:id>4b564955-053b-4f50-8f33-0fab96241398</tem:id>
+    <tem:name>HDAY - Epidural request-v0</tem:name>
+    <tem:description>
+        <tem:original_author>
+            <tem:item>
+                <tem:key>date</tem:key>
+                <tem:value>2008-01-08</tem:value>
+            </tem:item>
+            <tem:item>
+                <tem:key>name</tem:key>
+                <tem:value>Dr Ian McNicoll</tem:value>
+            </tem:item>
+            <tem:item>
+                <tem:key>organisation</tem:key>
+                <tem:value>freshEHR Informatics, UK</tem:value>
+            </tem:item>
+            <tem:item>
+                <tem:key>email</tem:key>
+                <tem:value>ian@freshehr.com</tem:value>
+            </tem:item>
+        </tem:original_author>
+        <tem:other_contributors>
+            <tem:item>Nadim Anani, Karolinska Institutet, Sweden</tem:item>
+            <tem:item>Vebjoern Arntzen, Oslo university hospital, Norway</tem:item>
+            <tem:item>Silje Ljosland Bakke, Bergen Hospital Trust, Norway (openEHR Editor)</tem:item>
+            <tem:item>Lars Bitsch-Larsen, Haukeland University hospital, Norway</tem:item>
+            <tem:item>Shahla Foozonkhah, Ocean Informatics, Australia</tem:item>
+            <tem:item>Heather Grain, Llewelyn Grain Informatics, Australia</tem:item>
+            <tem:item>Lars Karlsen, DIPS ASA, Norway</tem:item>
+            <tem:item>Shinji Kobayashi, Kyoto University, Japan</tem:item>
+            <tem:item>Heather Leslie, Ocean Informatics, Australia (openEHR Editor)</tem:item>
+            <tem:item>Ian McNicoll, freshEHR Clinical Informatics, United Kingdom (openEHR Editor)</tem:item>
+            <tem:item>Andrej Orel, Marand d.o.o., Slovenia</tem:item>
+            <tem:item>Jussara Rotzsch, UNB, Brazil</tem:item>
+            <tem:item>Norwegian Review Summary, Nasjonal IKT, Norway</tem:item>
+        </tem:other_contributors>
+        <tem:lifecycle_state>published</tem:lifecycle_state>
+        <tem:details>
+            <tem:purpose>To request advice, a specified service or transfer of care from a healthcare provider or organisation about the subject of care.</tem:purpose>
+            <tem:keywords>
+                <tem:item>referral</tem:item>
+                <tem:item>request</tem:item>
+                <tem:item>service</tem:item>
+            </tem:keywords>
+            <tem:use>Use as basis for a request for advice, a service or transfer of care from a healthcare provider or organisation about the subject of care. This document will typically include details about the scope and duration of validity of the request, as well as relevant clinical information about the subject. Requests can vary from a simple request for a consultation, seeking recommendation about further action, requesting a specific procedure or diagnostic test, through to full handover of care and clinical responsibility to the receiving healthcare provider.
+
+Use cases include, but are not limited to a request for:
+- a consultation, second opinion or management advice from a specialist;
+- a diagnostic test;
+- home care from visiting nurses;
+- transfer of care to a rehabilitation facility;
+- for aged care assessment;
+- for a medication review by a pharmacist; and
+- for provision of physiotherapy or occupational therapy.
+
+Requests may be targeted (identifying a specific healthcare provider or organisation to carry out the request) or untargeted (identifying only the type of care desired).</tem:use>
+            <tem:misuse>Not to be used to represent the document recorded as part of a single clinical encounter or visit. Use COMPOSITION.encounter for this purpose.
+
+Not to be used to provide a transfer of care summary to another organisation or provider - use COMPOSITION.transfer_summary for this purpose.</tem:misuse>
+            <tem:copyright>© openEHR Foundation</tem:copyright>
+        </tem:details>
+        <tem:other_details>
+            <tem:item>
+                <tem:key>licence</tem:key>
+                <tem:value>This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/.</tem:value>
+            </tem:item>
+            <tem:item>
+                <tem:key>custodian_organisation</tem:key>
+                <tem:value>openEHR Foundation</tem:value>
+            </tem:item>
+            <tem:item>
+                <tem:key>references</tem:key>
+                <tem:value>FHIR ReferralRequest resource: http://hl7-fhir.github.io/referralrequest.html</tem:value>
+            </tem:item>
+            <tem:item>
+                <tem:key>current_contact</tem:key>
+                <tem:value>Heather Leslie, Ocean Informatics&lt;heather.leslie@oceaninformatics.com&gt;</tem:value>
+            </tem:item>
+            <tem:item>
+                <tem:key>original_namespace</tem:key>
+                <tem:value>org.openehr</tem:value>
+            </tem:item>
+            <tem:item>
+                <tem:key>original_publisher</tem:key>
+                <tem:value>openEHR Foundation</tem:value>
+            </tem:item>
+            <tem:item>
+                <tem:key>custodian_namespace</tem:key>
+                <tem:value>org.openehr</tem:value>
+            </tem:item>
+            <tem:item>
+                <tem:key>MD5-CAM-1.0.1</tem:key>
+                <tem:value>359240E886E60B5DF8FF06904482F72E</tem:value>
+            </tem:item>
+            <tem:item>
+                <tem:key>build_uid</tem:key>
+                <tem:value>74936fc0-0b66-4e45-913e-0462c173c70f</tem:value>
+            </tem:item>
+            <tem:item>
+                <tem:key>revision</tem:key>
+                <tem:value>1.1.0</tem:value>
+            </tem:item>
+        </tem:other_details>
+    </tem:description>
+    <tem:definition archetype_id="openEHR-EHR-COMPOSITION.request.v1"
+        concept_name="Request for service" name="Epidural request"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="tem:COMPOSITION">
+        <tem:Content archetype_id="openEHR-EHR-INSTRUCTION.request.v0"
+            concept_name="Service request" name="Epidural request"
+            path="/content" xsi:type="tem:INSTRUCTION">
+            <tem:Rule path="/activities[at0001]/description[at0009]/items[at0121]"/>
+            <tem:Rule max="0" path="/activities[at0001]/description[at0009]/items[at0148]"/>
+            <tem:Rule max="0" path="/activities[at0001]/description[at0009]/items[at0135]"/>
+            <tem:Rule max="0" path="/activities[at0001]/description[at0009]/items[at0062]"/>
+            <tem:Rule max="0" path="/activities[at0001]/description[at0009]/items[at0064]"/>
+            <tem:Rule max="0" path="/activities[at0001]/description[at0009]/items[at0065]"/>
+            <tem:Rule max="0" path="/activities[at0001]/description[at0009]/items[at0068]">
+                <tem:constraint xsi:type="tem:multipleConstraint">
+                    <tem:includedTypes>Coded_text</tem:includedTypes>
+                    <tem:includedTypes>Text</tem:includedTypes>
+                </tem:constraint>
+            </tem:Rule>
+            <tem:Rule max="0" path="/activities[at0001]/description[at0009]/items[at0040]"/>
+            <tem:Rule max="0" path="/activities[at0001]/description[at0009]/items[at0145]"/>
+            <tem:Rule max="0" path="/activities[at0001]/description[at0009]/items[at0144]"/>
+            <tem:Rule max="0" path="/activities[at0001]/description[at0009]/items[at0147]"/>
+            <tem:Rule max="0" path="/activities[at0001]/description[at0009]/items[at0076]"/>
+            <tem:Rule max="0" path="/activities[at0001]/description[at0009]/items[at0078]"/>
+            <tem:Rule max="0" path="/activities[at0001]/description[at0009]/items[at0150]"/>
+            <tem:Rule max="0" path="/protocol[at0008]/items[at0010]"/>
+            <tem:Rule max="0" path="/protocol[at0008]/items[at0011]"/>
+            <tem:Rule max="0" path="/protocol[at0008]/items[at0127]"/>
+        </tem:Content>
+        <tem:Content archetype_id="openEHR-EHR-ACTION.procedure.v1"
+            path="/content" xsi:type="tem:ACTION">
+            <tem:Rule path="/description[at0001]/items[at0002]"/>
+            <tem:Rule max="0" path="/description[at0001]/items[at0049]"/>
+            <tem:Rule max="0" path="/description[at0001]/items[at0065]"/>
+            <tem:Rule max="0" path="/description[at0001]/items[at0058]"/>
+            <tem:Rule max="0" path="/description[at0001]/items[at0063]"/>
+            <tem:Rule max="0" path="/description[at0001]/items[at0048]"/>
+            <tem:Rule max="0" path="/description[at0001]/items[at0069]"/>
+            <tem:Rule max="0" path="/description[at0001]/items[at0006]"/>
+            <tem:Rule max="0" path="/description[at0001]/items[at0066]"/>
+            <tem:Rule max="0" path="/description[at0001]/items[at0060]"/>
+            <tem:Rule max="0" path="/description[at0001]/items[at0061]">
+                <tem:constraint xsi:type="tem:durationConstraint">
+                    <tem:minMagnitude>PT0S</tem:minMagnitude>
+                    <tem:includesMaximum>false</tem:includesMaximum>
+                    <tem:includesMinimum>true</tem:includesMinimum>
+                </tem:constraint>
+            </tem:Rule>
+            <tem:Rule max="0" path="/description[at0001]/items[at0067]"/>
+            <tem:Rule max="0" path="/description[at0001]/items[at0014]"/>
+            <tem:Rule max="0" path="/description[at0001]/items[at0005]"/>
+            <tem:Rule path="/protocol[at0053]/items[at0054]">
+                <tem:constraint xsi:type="tem:multipleConstraint">
+                    <tem:includedTypes>Text</tem:includedTypes>
+                    <tem:includedTypes xsi:nil="true"/>
+                </tem:constraint>
+            </tem:Rule>
+            <tem:Rule max="0" path="/protocol[at0053]/items[at0056]">
+                <tem:constraint xsi:type="tem:multipleConstraint">
+                    <tem:includedTypes>Text</tem:includedTypes>
+                    <tem:includedTypes xsi:nil="true"/>
+                </tem:constraint>
+            </tem:Rule>
+        </tem:Content>
+    </tem:definition>
+</tem:template>

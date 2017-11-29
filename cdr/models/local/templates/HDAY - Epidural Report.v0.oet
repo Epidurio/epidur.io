@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tem:template xmlns:tem="openEHR/v1/Template">
+    <tem:id>899d4f35-8430-4272-9dee-0426f3342137</tem:id>
+    <tem:name>HDAY - Epidural Report.v0</tem:name>
+    <tem:description>
+        <tem:original_author>
+            <tem:item>
+                <tem:key>date</tem:key>
+                <tem:value>2012-12-10</tem:value>
+            </tem:item>
+            <tem:item>
+                <tem:key>name</tem:key>
+                <tem:value>Heather Leslie</tem:value>
+            </tem:item>
+            <tem:item>
+                <tem:key>organisation</tem:key>
+                <tem:value>Ocean Informatics</tem:value>
+            </tem:item>
+            <tem:item>
+                <tem:key>email</tem:key>
+                <tem:value>heather.leslie@oceaninformatics.com</tem:value>
+            </tem:item>
+        </tem:original_author>
+        <tem:other_contributors>
+            <tem:item>Vebjoern Arntzen, Oslo university hospital, Norway</tem:item>
+            <tem:item>Silje Ljosland Bakke, Bergen Hospital Trust, Norway (openEHR Editor)</tem:item>
+            <tem:item>Sistine Barretto-Daniels, Ocean Informatics, Australia</tem:item>
+            <tem:item>Lars Bitsch-Larsen, Haukeland University hospital, Norway</tem:item>
+            <tem:item>Heath Frankel, Ocean Informatics, Australia</tem:item>
+            <tem:item>Heather Grain, Llewelyn Grain Informatics, Australia</tem:item>
+            <tem:item>Sam Heard, Ocean Informatics, Australia</tem:item>
+            <tem:item>Lars Karlsen, DIPS ASA, Norway</tem:item>
+            <tem:item>Sabine Leh, Haukeland University Hospital, Department of Pathology, Norway</tem:item>
+            <tem:item>Heather Leslie, Ocean Informatics, Australia (openEHR Editor)</tem:item>
+            <tem:item>Hugh Leslie, Ocean Informatics, Australia</tem:item>
+            <tem:item>Ian McNicoll, freshEHR Clinical Informatics, United Kingdom (openEHR Editor)</tem:item>
+            <tem:item>Andrej Orel, Marand d.o.o., Slovenia</tem:item>
+            <tem:item>Jussara Rotzsch, UNB, Brazil</tem:item>
+        </tem:other_contributors>
+        <tem:lifecycle_state>published</tem:lifecycle_state>
+        <tem:details>
+            <tem:purpose>Generic container archetype to carry information about any stand-alone procedure or operation performed.</tem:purpose>
+            <tem:keywords>
+                <tem:item>report</tem:item>
+                <tem:item>procedure</tem:item>
+                <tem:item>operation</tem:item>
+            </tem:keywords>
+            <tem:use>Use as a generic procedure-related archetype to carry information about any stand-alone procedure or operation performed. 
+
+It is anticipated that each COMPOSITION.report-procedure archetype will contain at least one ACTION.procedure (or related archetype) but depending on the complexity of the procedure it may contain a variety of other archetypes depending on the nature and complexity of the procedure performed. For example, archetypes to describe the associated anaesthetic or imaging activities carried out during the procedure.
+
+Common use cases are: 
+- any procedure that is not recorded as part of a consultation but needs to be carried out recorded as a stand-alone activity; 
+- Endoscopy Report; through to a 
+- complete Operation Report for an laparotomy or joint replacement.
+
+Record of the anaesthetic used to cover the procedure will be recorded using purpose-specific archetypes. They can be committed to the health record at the same time as the Procedure report, most likely in one of two ways:
+- in a separate Anaesthetic report. This is most likely if the anaesthetic is administered by a separate clinician to the one performing the procedure; or
+- in the same Procedure report as the procedure is recorded. This is most likely if the anaesthetic was administered by the same clinician who performed the procedure.
+
+The Sections component has been deliberately left unconstrained to maximise re-use of this archetype.</tem:use>
+            <tem:misuse>Not to be used for reports that are not related to a procedure. Use the generic COMPOSITION.report or purpose specific COMPOSITIONs as appropriate.
+
+Not to be used for procedures that are recorded as part of a consultation note, for example removal of a skin lesion in a primary care consultation - use a ACTION.procedure archetype inside the COMPOSITION.encouter for this purpose.
+
+Not to be used for procedures that are recorded as part of a nursing progress note, for example insertion of a catheter - use an ACTION.procedure archetype inside the COMPOSITION.progress_note.</tem:misuse>
+            <tem:copyright>© openEHR Foundation</tem:copyright>
+        </tem:details>
+        <tem:other_details>
+            <tem:item>
+                <tem:key>licence</tem:key>
+                <tem:value>This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/.</tem:value>
+            </tem:item>
+            <tem:item>
+                <tem:key>custodian_organisation</tem:key>
+                <tem:value>openEHR Foundation</tem:value>
+            </tem:item>
+            <tem:item>
+                <tem:key>current_contact</tem:key>
+                <tem:value>Heather Leslie, Ocean Informatics, heather.leslie@oceaninformatics.com</tem:value>
+            </tem:item>
+            <tem:item>
+                <tem:key>original_namespace</tem:key>
+                <tem:value>org.openehr</tem:value>
+            </tem:item>
+            <tem:item>
+                <tem:key>original_publisher</tem:key>
+                <tem:value>openEHR Foundation</tem:value>
+            </tem:item>
+            <tem:item>
+                <tem:key>custodian_namespace</tem:key>
+                <tem:value>org.openehr</tem:value>
+            </tem:item>
+            <tem:item>
+                <tem:key>MD5-CAM-1.0.1</tem:key>
+                <tem:value>DB2F1DD89E18B247BB5A55DEB3105531</tem:value>
+            </tem:item>
+            <tem:item>
+                <tem:key>build_uid</tem:key>
+                <tem:value>cc0b3876-5ff5-4de9-8aa9-f86df27ae720</tem:value>
+            </tem:item>
+            <tem:item>
+                <tem:key>revision</tem:key>
+                <tem:value>1.0.0</tem:value>
+            </tem:item>
+        </tem:other_details>
+    </tem:description>
+    <tem:definition
+        archetype_id="openEHR-EHR-COMPOSITION.report-procedure.v1"
+        concept_name="Procedure Report" name="Epidural Repport"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="tem:COMPOSITION">
+        <tem:Content archetype_id="openEHR-EHR-ACTION.procedure.v1"
+            path="/content" xsi:type="tem:ACTION">
+            <tem:Rule name="Intervention" path="/description[at0001]/items[at0002]">
+                <tem:constraint xsi:type="tem:textConstraint">
+                    <tem:includedValues>SNOMED-CT::18946005::Epidural anaesthesia</tem:includedValues>
+                    <tem:includedValues>SNOMED-CT::231260001::Administration of epidural topup</tem:includedValues>
+                    <tem:includedValues>SNOMED-CT::231249005::Spinal block</tem:includedValues>
+                    <tem:includedValues>SNOMED-CT::231261002::Combined spinal/epidural block</tem:includedValues>
+                    <tem:includedValues>SNOMED-CT::708910001::Insertion of temporary intrathecal catheter</tem:includedValues>
+                    <tem:includedValues>SNOMED-CT::241716000::Patient controlled analgesia</tem:includedValues>
+                    <tem:includedValues>SNOMED-CT::50697003::General anaesthesia</tem:includedValues>
+                </tem:constraint>
+            </tem:Rule>
+            <tem:Rule max="0" path="/description[at0001]/items[at0049]"/>
+            <tem:Rule max="0" path="/description[at0001]/items[at0065]"/>
+            <tem:Rule max="0" path="/description[at0001]/items[at0058]"/>
+            <tem:Rule max="0" path="/description[at0001]/items[at0063]"/>
+            <tem:Rule max="0" path="/description[at0001]/items[at0048]"/>
+            <tem:Rule max="0" path="/description[at0001]/items[at0069]"/>
+            <tem:Rule path="/description[at0001]/items[at0006]">
+                <tem:constraint xsi:type="tem:textConstraint">
+                    <tem:includedValues>this is just free text</tem:includedValues>
+                    <tem:includedValues>and another bit</tem:includedValues>
+                </tem:constraint>
+            </tem:Rule>
+            <tem:Rule max="0" path="/description[at0001]/items[at0066]"/>
+            <tem:Rule max="0" path="/description[at0001]/items[at0060]"/>
+            <tem:Rule max="0" path="/description[at0001]/items[at0061]">
+                <tem:constraint xsi:type="tem:durationConstraint">
+                    <tem:minMagnitude>PT0S</tem:minMagnitude>
+                    <tem:includesMaximum>false</tem:includesMaximum>
+                    <tem:includesMinimum>true</tem:includesMinimum>
+                </tem:constraint>
+            </tem:Rule>
+            <tem:Rule max="0" path="/description[at0001]/items[at0067]"/>
+            <tem:Rule min="1" name="Indication" path="/description[at0001]/items[at0014]">
+                <tem:constraint xsi:type="tem:textConstraint">
+                    <tem:includedValues>SNOMED-CT::397990008::Analgesia for labour/delivery</tem:includedValues>
+                    <tem:includedValues>SNOMED-CT::274130007::Emergency caesarean section</tem:includedValues>
+                    <tem:includedValues>SNOMED-CT::177141003::Elective caesarean section</tem:includedValues>
+                    <tem:includedValues>SNOMED-CT::237026005::Repair of perineal tear</tem:includedValues>
+                    <tem:includedValues>SNOMED-CT::28233006::Manual removal of retained placenta</tem:includedValues>
+                </tem:constraint>
+            </tem:Rule>
+            <tem:Rule max="0" path="/description[at0001]/items[at0005]"/>
+            <tem:Rule path="/protocol[at0053]/items[at0054]">
+                <tem:constraint xsi:type="tem:multipleConstraint">
+                    <tem:includedTypes>Text</tem:includedTypes>
+                    <tem:includedTypes xsi:nil="true"/>
+                </tem:constraint>
+            </tem:Rule>
+            <tem:Rule max="0" path="/protocol[at0053]/items[at0056]">
+                <tem:constraint xsi:type="tem:multipleConstraint">
+                    <tem:includedTypes>Text</tem:includedTypes>
+                    <tem:includedTypes xsi:nil="true"/>
+                </tem:constraint>
+            </tem:Rule>
+            <tem:Items
+                archetype_id="openEHR-EHR-CLUSTER.epidural_detail.v0"
+                path="/description[at0001]/items[at0003]" xsi:type="tem:CLUSTER"/>
+        </tem:Content>
+        <tem:Content archetype_id="openEHR-EHR-INSTRUCTION.request.v0"
+            concept_name="Service request" name="Refer for follow-up"
+            path="/content" xsi:type="tem:INSTRUCTION">
+            <tem:Rule path="/activities[at0001]/description[at0009]/items[at0121]"/>
+            <tem:Rule max="0" path="/activities[at0001]/description[at0009]/items[at0148]"/>
+            <tem:Rule max="0" path="/activities[at0001]/description[at0009]/items[at0135]"/>
+            <tem:Rule max="0" path="/activities[at0001]/description[at0009]/items[at0062]"/>
+            <tem:Rule max="0" path="/activities[at0001]/description[at0009]/items[at0064]"/>
+            <tem:Rule max="0" path="/activities[at0001]/description[at0009]/items[at0065]"/>
+            <tem:Rule max="0" path="/activities[at0001]/description[at0009]/items[at0068]">
+                <tem:constraint xsi:type="tem:multipleConstraint">
+                    <tem:includedTypes>Coded_text</tem:includedTypes>
+                    <tem:includedTypes>Text</tem:includedTypes>
+                </tem:constraint>
+            </tem:Rule>
+            <tem:Rule max="0" path="/activities[at0001]/description[at0009]/items[at0040]"/>
+            <tem:Rule max="0" path="/activities[at0001]/description[at0009]/items[at0145]"/>
+            <tem:Rule max="0" path="/activities[at0001]/description[at0009]/items[at0144]"/>
+            <tem:Rule max="0" path="/activities[at0001]/description[at0009]/items[at0147]"/>
+            <tem:Rule max="0" path="/activities[at0001]/description[at0009]/items[at0076]"/>
+            <tem:Rule max="0" path="/activities[at0001]/description[at0009]/items[at0078]"/>
+            <tem:Rule max="0" path="/activities[at0001]/description[at0009]/items[at0150]"/>
+            <tem:Rule max="0" path="/protocol[at0008]/items[at0010]"/>
+            <tem:Rule max="0" path="/protocol[at0008]/items[at0011]"/>
+            <tem:Rule max="0" path="/protocol[at0008]/items[at0127]"/>
+        </tem:Content>
+        <tem:Content archetype_id="openEHR-EHR-ACTION.service.v0"
+            concept_name="Service" name="Follow-up status"
+            path="/content" xsi:type="tem:ACTION">
+            <tem:Rule path="/description[at0001]/items[at0011]"/>
+            <tem:Rule max="0" path="/description[at0001]/items[at0014]"/>
+            <tem:Rule max="0" path="/description[at0001]/items[at0013]"/>
+            <tem:Rule max="0" path="/description[at0001]/items[at0021]">
+                <tem:constraint xsi:type="tem:countConstraint">
+                    <tem:minMagnitude>0</tem:minMagnitude>
+                    <tem:includesMaximum>false</tem:includesMaximum>
+                    <tem:includesMinimum>true</tem:includesMinimum>
+                </tem:constraint>
+            </tem:Rule>
+            <tem:Rule max="0" path="/description[at0001]/items[at0012]"/>
+            <tem:Rule max="0" path="/description[at0001]/items[at0028]"/>
+            <tem:Rule path="/protocol[at0015]/items[at0016]"/>
+            <tem:Rule max="0" path="/protocol[at0015]/items[at0018]"/>
+        </tem:Content>
+        <tem:Rule max="0" path="/context/other_context[at0001]/items[at0002]"/>
+        <tem:Rule max="0" path="/context/other_context[at0001]/items[at0005]"/>
+    </tem:definition>
+</tem:template>
