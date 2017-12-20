@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>Theming - Semantic</title>
+  <link rel="stylesheet" type="text/css" href="normlize.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+    <dl class="demographics" itemscope itemtype="http://schema.org/Person">
+        <div class="name">
+            <span itemprop="familyName">SMITH</span>,
+            <span itemprop="givenName">Joane</span>
+            <span itemprop="additionalName"></span>
+            (<span itemprop="honorificPrefix">Ms</span>)
+        </div>
+        <div class="identifiers">
+            <dt>NHS No:</dt><dd itemprop="NHSNo">123 456 7890</dd>
+            <dt>CRN:</dt><dd itemprop="CRN">C123456</dd>
+        </div>
+        <div class="detail">
+            <dt>Born:</dt>
+            <dd itemprop="birthDate" content="1950-03-14">
+                14-Mar-1950
+                <span itemprop="age">(67y)</span>
+            </dd>
+            <dt>Gender:</dt>
+            <dd itemprop="gender" href="http://schema.org/Female">Female</dd>
+        </div>
+        <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+            <dt>Address:</dt>
+            <dd itemprop="streetAddress">23 Fake Street</dd>
+            <dd itemprop="addressLocality">Town A</dd>
+            <dd itemprop="addressRegion">Cardiff</dd>
+            <dd itemprop="postalCode">AB1 2CD</dd>
+        </div>
+    </dl>
+
+
+
+</body>
+</html>
