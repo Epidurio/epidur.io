@@ -35,7 +35,9 @@
         %td= patient.DOB
         %td= patient.MRN
         %td= patient.NHS_No
-        %td= link_to 'create or view', patient_epidural_requests_path(patient_id: patient), :class => 'btn btn-mini btn-primary btn-block', style: "color:white"
+        %td= link_to 'create or view', patient_epidural_requests_path(patient_id: patient), :class => 'btn btn-mini btn-primary btn-block badge badge-light', style: "color:white"
+        %td= patient.epidural_requests.count, :class "span badge badge-success badge-left"
+
         /%td= (Time.now - patient.try(:epidural_requests).last.date_and_time)/60 || ""
         /%td= time_ago_in_words(patient.try(:epidural_requests).try(:last).try(:date_and_time))
         -if patient.epidural_requests.exists?
