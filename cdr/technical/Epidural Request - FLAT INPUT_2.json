@@ -1,0 +1,20 @@
+{
+    "ctx/language": "en",
+    "ctx/territory": "GB",
+    "ctx/composer_name": "",
+    "ctx/time": "2017-11-26T10:02:01.655Z",
+    "ctx/id_namespace": "HOSPITAL-NS",
+    "ctx/id_scheme": "HOSPITAL-NS",
+    "epidural_request/epidural_request:0/_uid": "cd54662d-3f13-4ff9-9a87-e57423f94d85",
+    "epidural_request/epidural_request:0/request:0/service_name": "Request for epidural",
+    "epidural_request/epidural_request:0/request:0/timing": "R5/2017-11-26T12:00:00Z/P2M",
+    "epidural_request/epidural_request:0/narrative": "Request for epidural",
+    "epidural_request/procedure:0/ism_transition/current_state|code": "524",
+    "epidural_request/procedure:0/ism_transition/current_state|value": "initial",
+    "epidural_request/procedure:0/time": "2017-11-26T10:02:01.655Z",
+    "epidural_request/procedure:0/procedure_name": "Epidural",
+  "epidural_request/procedure:0/requestor_order_identifier/value2": "cd54662d-3f13-4ff9-9a87-e57423f94d85",
+  "epidural_request/procedure:0/requestor_order_identifier/value2|issuer": "Imperial",
+  "epidural_request/procedure:0/requestor_order_identifier/value2|assigner": "Imperial",
+  "epidural_request/procedure:0/requestor_order_identifier/value2|type": "Placer_order_identifier"
+}

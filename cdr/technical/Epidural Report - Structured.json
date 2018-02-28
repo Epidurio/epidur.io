@@ -1,0 +1,107 @@
+{
+    "ctx/language": "en",
+    "ctx/territory": "GB",
+    "ctx/composer_name": "Dr Tim",
+    "ctx/time": "2017-11-25T16:05:20.237Z",
+    "ctx/id_namespace": "HOSPITAL-NS",
+    "ctx/id_scheme": "HOSPITAL-NS",
+    "ctx/health_care_facility|name": "Hackday Hospital",
+    "ctx/health_care_facility|id": "9091",
+    "epidural_repport": {
+        "procedure": [
+            {
+                "ism_transition": [
+                    {
+                        "current_state": [
+                            {
+                                "|code": "245",
+                                "|value": "performed"
+                            }
+                        ]
+                    }
+                ],
+                "intervention": [
+                    "Epidural"
+                ],
+                "complication": [
+                    "Accidental dural puncture"
+                ],
+                "indication": [
+                    "Emergency Caesarian Section"
+                ],
+                "epidural_detail": [
+                    {
+                        "number_of_attempts": [
+                            2
+                        ],
+                        "spinal_level": [
+                            {
+                                "|code": "at0004"
+                            }
+                        ],
+                        "approach": [
+                            {
+                                "|code": "at0007"
+                            }
+                        ],
+                        "depth": [
+                            {
+                                "|magnitude": 15,
+                                "|unit": "cm"
+                            }
+                        ]
+                    }
+                ],
+                "time": [
+                    "2016-12-25T16:05:20.242Z"
+                ]
+            }
+        ],
+        "service_request": [
+            {
+                "_uid": [
+                    "09bebe80-469f-4fca-85bc-626acf432768"
+                ],
+                "request": [
+                    {
+                        "service_name": [
+                            "Epidural Review"
+                        ],
+                        "timing": [
+                            {
+                                "|value": "R5/2017-11-25T16:00:00Z/P1M"
+                            }
+                        ]
+                    }
+                ],
+                "narrative": [
+                    "Epidural review"
+                ]
+            }
+        ],
+
+        "service": [
+            {
+                "ism_transition": [
+                    {
+                        "current_state": [
+                            {
+                                "|code": "529",
+                                "|value": "scheduled"
+                            }
+                        ]
+                    }
+                ],
+                "service_name": [
+                    "Epidural Review"
+                ],
+                "scheduled_date_time": [
+                    "2017-01-01T16:05:20.243Z"
+                ],
+                "time": [
+                    "2017-11-25T16:05:20.243Z"
+                ]
+            }
+        ]
+    }
+}

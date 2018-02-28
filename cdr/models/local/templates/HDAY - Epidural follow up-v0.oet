@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tem:template xmlns:tem="openEHR/v1/Template">
+    <tem:id>fd7664f4-e74d-4572-aa3f-e525080c8afc</tem:id>
+    <tem:name>HDAY - Epidural follow up-v0</tem:name>
+    <tem:description>
+        <tem:original_author>
+            <tem:item>
+                <tem:key>date</tem:key>
+                <tem:value>2005-10-10</tem:value>
+            </tem:item>
+            <tem:item>
+                <tem:key>name</tem:key>
+                <tem:value>Thomas Beale</tem:value>
+            </tem:item>
+            <tem:item>
+                <tem:key>organisation</tem:key>
+                <tem:value>Ocean Informatics, UK</tem:value>
+            </tem:item>
+            <tem:item>
+                <tem:key>email</tem:key>
+                <tem:value>thomas.beale@oceaninformatics.com</tem:value>
+            </tem:item>
+        </tem:original_author>
+        <tem:other_contributors>
+            <tem:item>Tomas Alme, DIPS, Norway</tem:item>
+            <tem:item>Nadim Anani, Karolinska Institutet, Sweden</tem:item>
+            <tem:item>Koray Atalag, University of Auckland, New Zealand</tem:item>
+            <tem:item>Silje Bakke, Bergen Hospital Trust, Norway</tem:item>
+            <tem:item>Steve Bentley, NHS CfH, United Kingdom</tem:item>
+            <tem:item>Rong Chen, Cambio Healthcare Systems, Sweden</tem:item>
+            <tem:item>Stephen Chu, NeHTA, Australia</tem:item>
+            <tem:item>Shahla Foozonkhah, Ocean Informatics, Australia</tem:item>
+            <tem:item>Konstantinos Kalliamvakos, Cambio Healthcare Systems, Sweden</tem:item>
+            <tem:item>Lars Karlsen, DIPS ASA, Norway</tem:item>
+            <tem:item>Heather Leslie, Ocean Informatics, Australia (Editor)</tem:item>
+            <tem:item>Luis Marco Ruiz, Norwegian Center for Integrated Care and Telemedicine, Norway</tem:item>
+            <tem:item>Ian McNicoll, freshEHR Clinical Informatics, United Kingdom (Editor)</tem:item>
+            <tem:item>Pablo Pazos, CaboLabs.com Health Informatics, Uruguay</tem:item>
+        </tem:other_contributors>
+        <tem:lifecycle_state>published</tem:lifecycle_state>
+        <tem:details>
+            <tem:purpose>To record the document level details of a single interaction, contact or care event between a subject of care and healthcare provider(s) for the provision of healthcare service(s). This can be either a face-to-face or remote interaction.</tem:purpose>
+            <tem:keywords>
+                <tem:item>encounter</tem:item>
+                <tem:item>contact</tem:item>
+                <tem:item>visit</tem:item>
+                <tem:item>care event</tem:item>
+            </tem:keywords>
+            <tem:use>Use as a generic document-level container for recording details of a single interaction, contact or care event between a subject of care and healthcare provider(s). 
+The contact may be face-to-face, via telephone or another electronic medium. Modality can be captured, if required, via the reference model COMPOSITION/mode attribute.
+
+The main Sections/Content component has been deliberately left unconstrained. This will allow it to be populated with any SECTION or ENTRY archetypes appropriate for the clinical purpose within a template. 
+
+Even though unconstrained for clinical content, specification of COMPOSITION.Encounter provides significant value by allowing for explicit querying of all Encounters within a patient record.
+
+The Context component contains an optional 'Extension' SLOT that can be used in template design to:
+- add optional contextual information, such as episode information; or
+- allow for harmonisation or alignment with other model formalisms such as FHIR or CIMI, such as explicit representation of participants that are usually managed by the openEHR Reference Model in an openEHR archetype.
+
+Typical examples are a clinic visit, a nursing observation or a telemedicine consultation.</tem:use>
+            <tem:misuse>Not to be used to record details about an entire episode of care.
+
+Not to be used to carry persistent, summarised patient information, such as a problem list or medication summary.
+
+Not to be used to represent the report of a diagnostic service, such as imaging or laboratory testing.
+
+Not to be used to represent the FHIR resource of the same name - there is a mismatch scope and intent.</tem:misuse>
+            <tem:copyright>© openEHR Foundation</tem:copyright>
+        </tem:details>
+        <tem:other_details>
+            <tem:item>
+                <tem:key>licence</tem:key>
+                <tem:value>This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/.</tem:value>
+            </tem:item>
+            <tem:item>
+                <tem:key>custodian_organisation</tem:key>
+                <tem:value>openEHR Foundation</tem:value>
+            </tem:item>
+            <tem:item>
+                <tem:key>references</tem:key>
+                <tem:value>TC 251, European Committee for Standardization: EN 13940-1:2007 Health informatics - System of concepts to support continuity of care - Part 1: Basic concepts.</tem:value>
+            </tem:item>
+            <tem:item>
+                <tem:key>original_namespace</tem:key>
+                <tem:value>org.openehr</tem:value>
+            </tem:item>
+            <tem:item>
+                <tem:key>original_publisher</tem:key>
+                <tem:value>openEHR Foundation</tem:value>
+            </tem:item>
+            <tem:item>
+                <tem:key>custodian_namespace</tem:key>
+                <tem:value>org.openehr</tem:value>
+            </tem:item>
+            <tem:item>
+                <tem:key>MD5-CAM-1.0.1</tem:key>
+                <tem:value>4DF6B3DE1A7F7899B4F88A97FED974E7</tem:value>
+            </tem:item>
+            <tem:item>
+                <tem:key>build_uid</tem:key>
+                <tem:value>34553a25-eced-4323-9c70-4d1077cb5389</tem:value>
+            </tem:item>
+            <tem:item>
+                <tem:key>revision</tem:key>
+                <tem:value>1.0.0</tem:value>
+            </tem:item>
+        </tem:other_details>
+    </tem:description>
+    <tem:definition archetype_id="openEHR-EHR-COMPOSITION.encounter.v1"
+        concept_name="Encounter" name="Epidural follow-up"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="tem:COMPOSITION">
+        <tem:Content archetype_id="openEHR-EHR-OBSERVATION.story.v1"
+            concept_name="Story/History" name="Follow-up"
+            path="/content" xsi:type="tem:OBSERVATION">
+            <tem:Rule name="Comment" path="/data[at0001]/events[at0002]/data[at0003]/items[at0004]"/>
+            <tem:Items
+                archetype_id="openEHR-EHR-CLUSTER.epidural_follow_up_details.v0"
+                path="/data[at0001]/events[at0002]/data[at0003]/items[at0006]" xsi:type="tem:CLUSTER"/>
+        </tem:Content>
+        <tem:Content archetype_id="openEHR-EHR-ACTION.service.v0"
+            concept_name="Service" name="Follow-up status"
+            path="/content" xsi:type="tem:ACTION">
+            <tem:Rule path="/description[at0001]/items[at0011]"/>
+            <tem:Rule max="0" path="/description[at0001]/items[at0014]"/>
+            <tem:Rule max="0" path="/description[at0001]/items[at0013]"/>
+            <tem:Rule max="0" path="/description[at0001]/items[at0025]"/>
+            <tem:Rule max="0" path="/description[at0001]/items[at0021]">
+                <tem:constraint xsi:type="tem:countConstraint">
+                    <tem:minMagnitude>0</tem:minMagnitude>
+                    <tem:includesMaximum>false</tem:includesMaximum>
+                    <tem:includesMinimum>true</tem:includesMinimum>
+                </tem:constraint>
+            </tem:Rule>
+            <tem:Rule max="0" path="/description[at0001]/items[at0012]"/>
+            <tem:Rule max="0" path="/description[at0001]/items[at0028]"/>
+            <tem:Rule path="/protocol[at0015]/items[at0016]"/>
+            <tem:Rule max="0" path="/protocol[at0015]/items[at0018]"/>
+        </tem:Content>
+        <tem:Content archetype_id="openEHR-EHR-INSTRUCTION.request.v0"
+            concept_name="Service request"
+            name="Refer for further review" path="/content" xsi:type="tem:INSTRUCTION">
+            <tem:Rule path="/activities[at0001]/description[at0009]/items[at0121]"/>
+            <tem:Rule max="0" path="/activities[at0001]/description[at0009]/items[at0148]"/>
+            <tem:Rule max="0" path="/activities[at0001]/description[at0009]/items[at0135]"/>
+            <tem:Rule max="0" path="/activities[at0001]/description[at0009]/items[at0064]"/>
+            <tem:Rule max="0" path="/activities[at0001]/description[at0009]/items[at0065]"/>
+            <tem:Rule max="0" path="/activities[at0001]/description[at0009]/items[at0068]">
+                <tem:constraint xsi:type="tem:multipleConstraint">
+                    <tem:includedTypes>Coded_text</tem:includedTypes>
+                    <tem:includedTypes>Text</tem:includedTypes>
+                </tem:constraint>
+            </tem:Rule>
+            <tem:Rule max="0" path="/activities[at0001]/description[at0009]/items[at0040]"/>
+            <tem:Rule max="0" path="/activities[at0001]/description[at0009]/items[at0145]"/>
+            <tem:Rule max="0" path="/activities[at0001]/description[at0009]/items[at0144]"/>
+            <tem:Rule max="0" path="/activities[at0001]/description[at0009]/items[at0147]"/>
+            <tem:Rule max="0" path="/activities[at0001]/description[at0009]/items[at0076]"/>
+            <tem:Rule max="0" path="/activities[at0001]/description[at0009]/items[at0078]"/>
+            <tem:Rule max="0" path="/activities[at0001]/description[at0009]/items[at0150]"/>
+            <tem:Rule max="0" path="/protocol[at0008]/items[at0010]"/>
+            <tem:Rule max="0" path="/protocol[at0008]/items[at0011]"/>
+            <tem:Rule max="0" path="/protocol[at0008]/items[at0127]"/>
+        </tem:Content>
+        <tem:Content archetype_id="openEHR-EHR-ACTION.service.v0"
+            concept_name="Service" name="Additional follow-up status"
+            path="/content" xsi:type="tem:ACTION">
+            <tem:Rule path="/description[at0001]/items[at0011]"/>
+            <tem:Rule max="0" path="/description[at0001]/items[at0014]"/>
+            <tem:Rule max="0" path="/description[at0001]/items[at0013]"/>
+            <tem:Rule max="0" path="/description[at0001]/items[at0025]"/>
+            <tem:Rule max="0" path="/description[at0001]/items[at0021]">
+                <tem:constraint xsi:type="tem:countConstraint">
+                    <tem:minMagnitude>0</tem:minMagnitude>
+                    <tem:includesMaximum>false</tem:includesMaximum>
+                    <tem:includesMinimum>true</tem:includesMinimum>
+                </tem:constraint>
+            </tem:Rule>
+            <tem:Rule max="0" path="/description[at0001]/items[at0012]"/>
+            <tem:Rule max="0" path="/description[at0001]/items[at0028]"/>
+            <tem:Rule path="/protocol[at0015]/items[at0016]"/>
+            <tem:Rule max="0" path="/protocol[at0015]/items[at0018]"/>
+        </tem:Content>
+    </tem:definition>
+</tem:template>
