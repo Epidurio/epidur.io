@@ -1,24 +1,7 @@
-# README
+# rails-epidurio
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project was a proof of concept application for recording and follow-up of epidural insertion for labour analgesia, originally developed by [@timcknowles](https://github.com/timcknowles) and subsequently by a team at the first NHS Ideas Lab (November 2017)
 
-Things you may want to cover:
+Following a successful application for funding for further development, the main effort has shifted to a [new version](https://github.com/Epidurio/opal-epidur.io), written in the [Opal Framework](http://opal.openhealthcare.org.uk), which in turn is based on Django and Angular.js.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+https://github.com/Epidurio/opal-epidur.io
