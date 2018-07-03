@@ -14,3 +14,6 @@
  *= require_self
  *s require simple_form_extension
  */
+
+ // Custom bootstrap variables must be set or imported *before* bootstrap.
+@import "bootstrap";

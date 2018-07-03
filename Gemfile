@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 
-
+ruby '2.5.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
+gem 'rails', '~> 5.2.0'
 # Use postgresql as the database for Active Record
-gem 'pg', '~> 0.18'
+gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -18,18 +18,15 @@ gem 'coffee-rails', '~> 4.2'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
-#gem 'simple_form_extension'
+gem 'bootstrap'
 
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'bootstrap', '~> 4.0.0.alpha3.1'
-
 gem 'turbolinks', '~> 5'
+gem 'haml'
+gem "haml-rails"
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
-
-gem 'haml', '~> 4.0.5'
-
-gem "haml-rails", "~> 0.9"
 
 gem "binding_of_caller"
 
@@ -37,7 +34,6 @@ gem 'devise'
 
 gem 'simple_form'
 
-ruby "2.3.1"
 
 gem 'test-unit'
 
@@ -53,9 +49,7 @@ gem 'enum_help'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
-
   gem "better_errors"
-
   gem 'rails_layout'
 end
 
