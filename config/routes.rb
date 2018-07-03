@@ -10,12 +10,15 @@ Rails.application.routes.draw do
     resource :patients
   end
   get 'all_anaesthetics', to: 'anaesthetics#all_anaesthetics'
+  
   resources :patients do
     resources :anaesthetics
     resources :follow_ups
     resources :epidural_requests
   end
+
+  # all auth and user handling is done with Devise
   devise_for :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
   root 'patients#index'
 end
