@@ -1,0 +1,53 @@
+<div class="container">
+
+  <h1>Patients</h1>
+
+  <table class="table table-striped responsive">
+    <thead>
+      <tr>
+        <th>Patient name</th>
+        <th>DOB</th>
+        <th>MRN</th>
+        <th>NHS NO:</th>
+        <th>Epidural Request</th>
+        <th>Epidural Wait Time</th>
+        <th>Anaesthetic</th>
+        <th>Follow Up</th>
+        <th>Details</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @patients.each do |patient| %>
+        <tr>
+          <td><%= patient.full_name %></td>
+          <td><%= patient.DOB %></td>
+          <td><%= patient.MRN %></td>
+          <td><%= patient.NHS_No %></td>
+          <td><%= link_to 'create or view', patient_epidural_requests_path(patient_id: patient), :class => 'btn btn-mini btn-primary btn-block', style: "color:white" %></td>
+          <% if patient.epidural_requests.exists? %>
+            <td><%= time_ago_in_words(patient.epidural_requests.last.date_and_time) %></td>
+          <% else %>
+            <td><%= "N/A" %></td>
+          <% end %>
+          <td><%= link_to 'create or view', patient_anaesthetics_path(patient_id: patient), :class => 'btn btn-mini btn-primary btn-block', style: "color:white" %>
+          </td>
+          <% if patient.discharge? %>
+            <td><%= link_to 'complete', patient_follow_ups_path(patient_id: patient), :class => 'btn btn-mini btn-success btn-block', style: "color:white" %></td>
+          <% end %>
+          <% if patient.review? %>
+            <td><%= link_to 'create', patient_follow_ups_path(patient_id: patient), :class => 'btn btn-mini btn-primary btn-block', style: "color:white" %></td>
+          <% end %>
+          <% if patient.pending? %>
+            <td><%= link_to 'needs review' , patient_follow_ups_path(patient_id: patient), :class => 'btn btn-mini btn-warning btn-block', style: "color:white" %></td>
+          <% end %>
+          <td><%= link_to 'View', patient, :class => 'btn btn-mini btn-success btn-block', style: "color:white" %></td>
+          <td><%= link_to 'Delete', patient, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-mini btn-danger btn-block' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br/>
+  <%= link_to 'New Patient', new_patient_path, :class => 'btn btn-light' %>
+</div>
